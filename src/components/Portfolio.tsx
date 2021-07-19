@@ -7,6 +7,9 @@ import { useContext } from 'react';
 import { StoreContext } from '..';
 import ReactJson from 'react-json-view';
 
+import BoostBox from './BoostBox';
+import PendingBox from './PendingBox';
+
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
@@ -57,6 +60,8 @@ const Portfolio = observer(() => {
 
   return (
     <div className={classes.rootContainer}>
+      <BoostBox />
+      <PendingBox />
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
       </Typography>
