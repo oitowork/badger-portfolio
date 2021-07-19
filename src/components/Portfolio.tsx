@@ -1,11 +1,12 @@
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+// import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import React from 'react';
 import { useContext } from 'react';
 import { StoreContext } from '..';
 import ReactJson from 'react-json-view';
+import AssetAllocation from './assetAllocation';
 
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
@@ -49,18 +50,18 @@ const Portfolio = observer(() => {
   const store = useContext(StoreContext);
   const { account } = store;
 
-  const resources: Record<string, string> = {
-    'API Documentation': 'https://docs.badger.finance/',
-    'Portfolio Figma': 'https://www.figma.com/file/RkfjApAEdctYaKT3JgiH1M/Badger-Portfolio?node-id=0%3A1',
-    'Github Repository': 'https://github.com/Badger-Finance/badger-hackathon/tree/badger-portfolio-hackathon',
-  };
+  // const resources: Record<string, string> = {
+  //   'API Documentation': 'https://docs.badger.finance/',
+  //   'Portfolio Figma': 'https://www.figma.com/file/RkfjApAEdctYaKT3JgiH1M/Badger-Portfolio?node-id=0%3A1',
+  //   'Github Repository': 'https://github.com/Badger-Finance/badger-hackathon/tree/badger-portfolio-hackathon',
+  // };
 
   return (
     <div className={classes.rootContainer}>
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
       </Typography>
-      {Object.entries(resources).map((res) => (
+      {/* {Object.entries(resources).map((res) => (
         <div key={res[0]} className={classes.links}>
           <Typography align="right">{res[0]}</Typography>
           <a href={res[1]} target="_blank" rel="noreferrer" className={classes.anchor}>
@@ -68,7 +69,8 @@ const Portfolio = observer(() => {
             <ExitToAppIcon />
           </a>
         </div>
-      ))}
+      ))} */}
+      <AssetAllocation />
       <Typography variant="h5" align="center" className={classes.header}>
         Example Response
       </Typography>
