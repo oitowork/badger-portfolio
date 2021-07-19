@@ -2,6 +2,7 @@ import React from 'react';
 import { MobxRouter } from 'mobx-router';
 import { makeStyles } from '@material-ui/core';
 import store from './mobx/store';
+import NetWorth from './components/networth';
 
 const useStyles = makeStyles((theme) => ({
   appContainer: {
@@ -18,6 +19,7 @@ export default function App(): JSX.Element {
   return (
     <div className={classes.appContainer}>
       <MobxRouter store={store} />
+      <NetWorth />
     </div>
   );
 }

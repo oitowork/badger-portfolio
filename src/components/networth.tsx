@@ -81,7 +81,7 @@ const NetWorth = observer(() => {
     <Container maxWidth="sm" className={classes.container}>
       <Box className={classes.box}>
         <Typography variant="h3" align="left" className={classes.title}>
-          ${account == null ? 'Loading' : account.value}
+          ${account == null ? 'Loading' : account.value.toLocaleString()}
         </Typography>
         <Typography variant="h6" align="left" className={classes.subtitle}>
           Your neth worth
@@ -98,7 +98,7 @@ const NetWorth = observer(() => {
           <span className={classes.undertext}>ROI in $ value</span>
         </Typography>
         <Typography className={classes.text}>
-          ${account == null ? 'Loading' : account.earnedValue}
+          ${account == null ? 'Loading' : account.earnedValue.toLocaleString()}
           <span className={classes.undertext}>Earned $Badger</span>
         </Typography>
       </Box>
