@@ -1,11 +1,8 @@
 import React, { useContext } from 'react';
-
 import { makeStyles, Typography, Button } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import { StoreContext } from '..';
-
 import Box from '@material-ui/core/Box';
-
 const useStyles = makeStyles((theme) => ({
   box: {
     display: 'flex',
@@ -22,28 +19,22 @@ const useStyles = makeStyles((theme) => ({
       padding: '0 33px',
     },
   },
-
   title: {
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: '24px',
     lineHeight: '40px',
-
-    /* identical to box height, or 167% */
     display: 'flex',
     alignItems: 'center',
     textAlign: 'center',
     color: '#FFFFFF',
     background: 'none',
   },
-
   text: {
     fontStyle: 'normal',
     fonteHight: 'normal',
     fontSize: '13px',
     lineHeight: '28px',
-    /* identical to box height, or 215% */
-
     display: 'flex',
     alignItems: 'center',
     textAlign: 'center',
@@ -57,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       background: '#121212',
     },
-
     [theme.breakpoints.down('xs')]: {
       width: '100%',
     },
@@ -67,7 +57,6 @@ const PendingBox = observer(() => {
   const classes = useStyles();
   const store = useContext(StoreContext);
   const { account } = store;
-
   return (
     <Box className={classes.box}>
       <Typography variant="h5" align="center" className={classes.title}>
@@ -82,5 +71,4 @@ const PendingBox = observer(() => {
     </Box>
   );
 });
-
 export default PendingBox;
