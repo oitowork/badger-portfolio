@@ -48,24 +48,27 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '20px',
   },
   text: {
+    margin: '1%',
+    width: '20%',
     color: '##FFFFFF',
     fontSize: '20px',
     fontWeight: 'normal',
-    margin: '1%',
-    width: '20%',
   },
   undertext: {
-    alignContent: 'space-between',
-    alignItems: 'flex-start',
     color: '#747474',
+    fontSize: '13px',
     display: 'flex',
     flexDirection: 'row',
-    fontSize: '13px',
+    alignContent: 'space-between',
+    alignItems: 'flex-start',
   },
   divider: {
     backgroundColor: 'black',
     margin: '0px',
     padding: '0px',
+  },
+  roi: {
+    color: '#F2A627',
   },
 }));
 
@@ -78,7 +81,7 @@ const NetWorth = observer(() => {
     <Container maxWidth="sm" className={classes.container}>
       <Box className={classes.box}>
         <Typography variant="h3" align="left" className={classes.title}>
-          $1,440,200.00
+          ${account == null ? 'Loading' : account.value}
         </Typography>
         <Typography variant="h6" align="left" className={classes.subtitle}>
           Your neth worth
@@ -87,18 +90,16 @@ const NetWorth = observer(() => {
       <Divider variant="middle" className={classes.divider} />
       <Box className={classes.alignment}>
         <Typography className={classes.text}>
-          <span style={{ color: '#F2A627' }}>+42.069% </span>
+          <span className={classes.roi}>+42.069% </span>
           <span className={classes.undertext}>ROI in % </span>
         </Typography>
         <Typography className={classes.text}>
-          <span>$440,200.00</span>
+          $440,200.00
           <span className={classes.undertext}>ROI in $ value</span>
         </Typography>
         <Typography className={classes.text}>
           ${account == null ? 'Loading' : account.earnedValue}
-          <span id="ola" className={classes.undertext}>
-            Earned $Badger
-          </span>
+          <span className={classes.undertext}>Earned $Badger</span>
         </Typography>
       </Box>
     </Container>
