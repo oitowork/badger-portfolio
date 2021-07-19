@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
   text: {
     fontStyle: 'normal',
-    fonteHight: 'normal',
+    fontWeight: 'normal',
     fontSize: '13px',
     lineHeight: '28px',
     display: 'flex',
