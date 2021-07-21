@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '32px',
     fontStyle: 'normal',
     fontWeight: 'normal',
+    fonteHight: 'normal',
     lineHeight: '40px',
     paddingLeft: '20px',
     paddingTop: '30px',
@@ -77,6 +78,13 @@ const NetWorth = observer(() => {
   const store = useContext(StoreContext);
   const { account } = store;
 
+  let sunRoi = 0;
+  account?.balances.forEach((balance: any) => {
+    balance.earnedTokens.forEach((token: any) => {
+      sunRoi += token.value;
+    });
+  });
+
   return (
     <Container maxWidth="sm" className={classes.container}>
       <Box className={classes.box}>
@@ -94,7 +102,7 @@ const NetWorth = observer(() => {
           <span className={classes.undertext}>ROI in % </span>
         </Typography>
         <Typography className={classes.text}>
-          $440,200.00
+          {`${sunRoi.toLocaleString()}`}
           <span className={classes.undertext}>ROI in $ value</span>
         </Typography>
         <Typography className={classes.text}>
