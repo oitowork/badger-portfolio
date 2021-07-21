@@ -1,10 +1,8 @@
 import React from 'react';
-
 import { observer } from 'mobx-react-lite';
 import { StoreContext } from '../../index';
 
 import { makeStyles, Box } from '@material-ui/core';
-
 import Container from '@material-ui/core/Container';
 import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -13,8 +11,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
-import HeaderBalance from './HeaderBalance';
 import { Typography } from '@material-ui/core';
+import HeaderBalance from './HeaderBalance';
 
 const useStyles = makeStyles(() => ({
   tableContainer: {
@@ -52,7 +50,6 @@ const useStyles = makeStyles(() => ({
       background: '#242424',
     },
   },
-
   footer: {
     height: '36px',
     width: 'inherit',
@@ -147,5 +144,4 @@ const StrategyBalances = observer(() => {
     </Container>
   );
 });
-
 export default StrategyBalances;

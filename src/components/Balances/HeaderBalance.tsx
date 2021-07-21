@@ -41,13 +41,13 @@ const useStyle = makeStyles(() => ({
     },
   },
 }));
+
 interface Props {
   title: string;
   subTitle1: string;
   subTitle2: string;
   balance: number;
 }
-
 const HeaderBalance = ({ title, subTitle1, balance, subTitle2 }: Props): JSX.Element => {
   const classes = useStyle();
   return (
