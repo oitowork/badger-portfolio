@@ -1,7 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { StoreContext } from '../../index';
-
 import { makeStyles, Box } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Table from '@material-ui/core/Table';
@@ -13,8 +12,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import { Typography } from '@material-ui/core';
 import HeaderBalance from './HeaderBalance';
-
 const useStyles = makeStyles(() => ({
+  container: {
+    maxWidth: '1230px',
+    borderRadius: '0 0 16px 16px',
+    boxShadow: ' 0px 4px 4px rgba(0, 0, 0, 0.25)',
+    padding: '0',
+  },
   tableContainer: {
     borderRadius: '0',
     boxShadow: ' 0px 0px 4px rgba(0, 0, 0, 0.25)',
@@ -50,6 +54,9 @@ const useStyles = makeStyles(() => ({
       background: '#242424',
     },
   },
+  text: {
+    color: '#F2A627',
+  },
   footer: {
     height: '36px',
     width: 'inherit',
@@ -59,13 +66,12 @@ const useStyles = makeStyles(() => ({
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
   },
 }));
-
 const StrategyBalances = observer(() => {
   const classes = useStyles();
   const store = React.useContext(StoreContext);
   const { account } = store;
   return (
-    <Container style={{ maxWidth: '1230px' }}>
+    <Container className={classes.container}>
       <HeaderBalance
         title="Strategy Balances"
         subTitle1="Balances across all strategies"
@@ -92,43 +98,7 @@ const StrategyBalances = observer(() => {
                 <Typography variant="h6">43.33%</Typography>
               </TableCell>
               <TableCell align="right">
-                <Typography style={{ color: '#F2A627' }} variant="h6">
-                  43.33%
-                </Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography variant="h6">10.29</Typography>
-                <Typography variant="body1">$ 10,249.00</Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align="left">
-                <Typography variant="h6">wrapped BTC/Digg</Typography>
-                <Typography variant="body1">$ 10,249.00</Typography>
-              </TableCell>
-              <TableCell align="center">
-                <Typography variant="h6">43.33%</Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography style={{ color: '#F2A627' }} variant="h6">
-                  43.33%
-                </Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography variant="h6">10.29</Typography>
-                <Typography variant="body1">$ 10,249.00</Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align="left">
-                <Typography variant="h6">wrapped BTC/Digg</Typography>
-                <Typography variant="body1">$ 10,249.00</Typography>
-              </TableCell>
-              <TableCell align="center">
-                <Typography variant="h6">43.33%</Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography style={{ color: '#F2A627' }} variant="h6">
+                <Typography className={classes.text} variant="h6">
                   43.33%
                 </Typography>
               </TableCell>
