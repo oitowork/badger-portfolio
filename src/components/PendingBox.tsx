@@ -57,10 +57,15 @@ const PendingBox = observer(() => {
   const classes = useStyles();
   const store = useContext(StoreContext);
   const { account } = store;
+  let pedingValue = 0;
+  account?.balances.forEach((balance: any) => {
+    pedingValue += balance.withdrawnBalance;
+  });
+
   return (
     <Box className={classes.box}>
       <Typography variant="h5" align="center" className={classes.title}>
-        $0
+        {`${pedingValue.toLocaleString()}`}
       </Typography>
       <Typography variant="subtitle2" align="center" className={classes.text}>
         Pending
