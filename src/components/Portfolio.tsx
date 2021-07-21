@@ -7,8 +7,9 @@ import { useContext } from 'react';
 import { StoreContext } from '..';
 import ReactJson from 'react-json-view';
 
-import BoostBox from './BoostBox';
-import PendingBox from './PendingBox';
+//import BoostBox from './BoostBox';
+//import PendingBox from './PendingBox';
+import AssetBalances from './Balances/StrategyBalances';
 
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
@@ -60,8 +61,7 @@ const Portfolio = observer(() => {
 
   return (
     <div className={classes.rootContainer}>
-      <BoostBox />
-      <PendingBox />
+      <AssetBalances />
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
       </Typography>
