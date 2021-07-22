@@ -46,7 +46,7 @@ interface Props {
   title: string;
   subTitle1: string;
   subTitle2: string;
-  balance: number;
+  balance: number | undefined;
 }
 const HeaderBalance = ({ title, subTitle1, balance, subTitle2 }: Props): JSX.Element => {
   const classes = useStyle();
@@ -62,7 +62,7 @@ const HeaderBalance = ({ title, subTitle1, balance, subTitle2 }: Props): JSX.Ele
       </Box>
       <Box component="div" className={classes.headerRight}>
         <Typography variant="h2" align="right">
-          {balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+          {balance?.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
         </Typography>
         <Typography variant="h5" align="right">
           {subTitle2}
