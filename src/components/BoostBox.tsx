@@ -1,42 +1,42 @@
-import React, { useContext } from 'react';
-import { makeStyles, Typography } from '@material-ui/core';
-import { observer } from 'mobx-react-lite';
-import { StoreContext } from '..';
-import Box from '@material-ui/core/Box';
+import React, { useContext } from "react";
+import { makeStyles, Typography } from "@material-ui/core";
+import { observer } from "mobx-react-lite";
+import { StoreContext } from "..";
+import Box from "@material-ui/core/Box";
 const useStyles = makeStyles({
   box: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '36px 33px',
-    width: '296px',
-    height: ' 191px',
-    background: '#2B2B2B',
-    boxShadow: ' 0px 4px 4px rgba(0, 0, 0, 0.25)',
-    borderRadius: '16px',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "36px 33px",
+    width: "296px",
+    height: " 191px",
+    background: "#2B2B2B",
+    boxShadow: " 0px 4px 4px rgba(0, 0, 0, 0.25)",
+    borderRadius: "16px",
   },
   title: {
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: '24px',
-    lineHeight: '40px',
-    display: 'flex',
-    alignItems: 'center',
-    textAlign: 'center',
-    color: '#FFFFFF',
-    background: 'none',
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: "24px",
+    lineHeight: "40px",
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
+    color: "#FFFFFF",
+    background: "none",
   },
   text: {
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: '13px',
-    lineHeight: '28px',
-    display: 'flex',
-    alignItems: 'center',
-    textAlign: 'center',
-    color: '#747474',
-    marginBottom: '18px',
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: "13px",
+    lineHeight: "28px",
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
+    color: "#747474",
+    marginBottom: "18px",
   },
 });
 const BoostBox = observer(() => {

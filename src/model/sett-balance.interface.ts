@@ -1,4 +1,4 @@
-import { TokenBalance } from './token-balance.interface';
+import { TokenBalance } from "./token-balance.interface";
 
 export interface SettBalance {
   id: string;
