@@ -71,7 +71,6 @@ const StrategyBalances = observer(() => {
   const classes = useStyles();
   const store = React.useContext(StoreContext);
   const { account } = store;
-
   return (
     <Container className={classes.container}>
       <HeaderBalance

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, makeStyles, Typography } from '@material-ui/core';
-
 const useStyle = makeStyles(() => ({
   header: {
     display: 'flex',
