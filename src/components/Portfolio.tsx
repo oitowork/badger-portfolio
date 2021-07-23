@@ -1,28 +1,28 @@
-import { Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
-import { observer } from 'mobx-react-lite';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import React from 'react';
-import { useContext } from 'react';
-import { StoreContext } from '..';
-import ReactJson from 'react-json-view';
+import { Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+import { observer } from "mobx-react-lite";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import React from "react";
+import { useContext } from "react";
+import { StoreContext } from "..";
+import ReactJson from "react-json-view";
 
 //import BoostBox from './BoostBox';
 //import PendingBox from './PendingBox';
-import AssetBalances from './Balances/StrategyBalances';
+import AssetBalances from "./Balances/StrategyBalances";
 
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
-    height: '100%',
+    height: "100%",
   },
   links: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
     marginBottom: theme.spacing(1),
-    width: '30%',
-    margin: 'auto',
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
+    width: "30%",
+    margin: "auto",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
     },
   },
   header: {
@@ -30,20 +30,20 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(3),
   },
   anchor: {
-    textDecoration: 'none',
-    color: 'inherit',
-    cursor: 'pointer',
-    display: 'flex',
-    justifyContent: 'space-between',
-    minWidth: '65px',
+    textDecoration: "none",
+    color: "inherit",
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "space-between",
+    minWidth: "65px",
   },
   json: {
-    margin: 'auto',
-    maxWidth: '60%',
-    maxHeight: '600px',
-    overflow: 'auto',
-    [theme.breakpoints.down('sm')]: {
-      maxWidth: '95%',
+    margin: "auto",
+    maxWidth: "60%",
+    maxHeight: "600px",
+    overflow: "auto",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "95%",
     },
   },
 }));
@@ -54,9 +54,11 @@ const Portfolio = observer(() => {
   const { account } = store;
 
   const resources: Record<string, string> = {
-    'API Documentation': 'https://docs.badger.finance/',
-    'Portfolio Figma': 'https://www.figma.com/file/RkfjApAEdctYaKT3JgiH1M/Badger-Portfolio?node-id=0%3A1',
-    'Github Repository': 'https://github.com/Badger-Finance/badger-hackathon/tree/badger-portfolio-hackathon',
+    "API Documentation": "https://docs.badger.finance/",
+    "Portfolio Figma":
+      "https://www.figma.com/file/RkfjApAEdctYaKT3JgiH1M/Badger-Portfolio?node-id=0%3A1",
+    "Github Repository":
+      "https://github.com/Badger-Finance/badger-hackathon/tree/badger-portfolio-hackathon",
   };
 
   return (
@@ -68,7 +70,12 @@ const Portfolio = observer(() => {
       {Object.entries(resources).map((res) => (
         <div key={res[0]} className={classes.links}>
           <Typography align="right">{res[0]}</Typography>
-          <a href={res[1]} target="_blank" rel="noreferrer" className={classes.anchor}>
+          <a
+            href={res[1]}
+            target="_blank"
+            rel="noreferrer"
+            className={classes.anchor}
+          >
             <Typography align="left">View</Typography>
             <ExitToAppIcon />
           </a>

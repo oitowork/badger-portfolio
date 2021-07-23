@@ -1,6 +1,6 @@
-import { BoostMultipliers } from './boost-multipliers.interface';
-import { CachedBalance } from './cached-balance.interface';
-import { SettBalance } from './sett-balance.interface';
+import { BoostMultipliers } from "./boost-multipliers.interface";
+import { CachedBalance } from "./cached-balance.interface";
+import { SettBalance } from "./sett-balance.interface";
 
 export interface Account {
   id: string;
