@@ -12,8 +12,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import { Typography } from '@material-ui/core';
 import HeaderBalance from './HeaderBalance';
-
-// import { TokenBalance } from '../../model/token-balance.interface';
 const useStyles = makeStyles(() => ({
   container: {
     maxWidth: '1230px',
@@ -86,35 +84,41 @@ const AssetBalances = observer(() => {
           </TableHead>
           <TableBody>
             {account?.balances.map(({ tokens }) =>
-              tokens.map(({ name, balance, value }) => (
-                <TableRow key={name}>
-                  <TableCell align="left">
-                    <Typography variant="h6">{name}</Typography>
-                    <Typography variant="body1">
-                      {value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
-                    </Typography>
-                  </TableCell>
-                  <TableCell align="center">
-                    <Typography variant="h6">
-                      {(value / account?.nonNativeBalance).toLocaleString(undefined, {
-                        style: 'percent',
-                        minimumFractionDigits: 2,
-                      })}
-                    </Typography>
-                  </TableCell>
-                  <TableCell align="right">
-                    <Typography variant="h6">10</Typography>
-                    <Typography variant="body1">0.00008 BTC</Typography>
-                  </TableCell>
-                  <TableCell align="right">
-                    <Typography variant="h6">{balance.toFixed(2)}</Typography>
-                    <Typography variant="body1">
-                      {value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-              )),
+              tokens.map(({ name, balance, value, decimals }) => {
+                const priceValue = value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                return (
+                  <TableRow key={name}>
+                    <TableCell align="left">
+                      <Typography variant="h6">{name}</Typography>
+                      <Typography variant="body1">{priceValue}</Typography>
+                    </TableCell>
+                    <TableCell align="center">
+                      <Typography variant="h6">
+                        {(value / account?.nonNativeBalance).toLocaleString(undefined, {
+                          style: 'percent',
+                          minimumFractionDigits: 2,
+                        })}
+                      </Typography>
+                    </TableCell>
+                    <TableCell align="right">
+                      <Typography variant="h6">
+                        {(balance / value).toLocaleString('en-US', {
+                          style: 'currency',
+                          currency: 'USD',
+                          minimumFractionDigits: decimals,
+                        })}
+                      </Typography>
+                      <Typography variant="body1">0.00008 BTC</Typography>
+                    </TableCell>
+                    <TableCell align="right">
+                      <Typography variant="h6">{balance.toFixed(2)}</Typography>
+                      <Typography variant="body1">{priceValue}</Typography>
+                    </TableCell>
+                  </TableRow>
+                );
+              }),
             )}
+            )
           </TableBody>
         </Table>
       </TableContainer>
