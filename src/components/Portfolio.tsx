@@ -6,11 +6,8 @@ import React from 'react';
 import { useContext } from 'react';
 import { StoreContext } from '..';
 import ReactJson from 'react-json-view';
-
-//import BoostBox from './BoostBox';
-//import PendingBox from './PendingBox';
-import AssetBalances from './Balances/StrategyBalances';
-
+import BoostBox from './BoostBox';
+import PendingBox from './PendingBox';
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
@@ -47,21 +44,19 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
 const Portfolio = observer(() => {
   const classes = useStyles();
   const store = useContext(StoreContext);
   const { account } = store;
-
   const resources: Record<string, string> = {
     'API Documentation': 'https://docs.badger.finance/',
     'Portfolio Figma': 'https://www.figma.com/file/RkfjApAEdctYaKT3JgiH1M/Badger-Portfolio?node-id=0%3A1',
     'Github Repository': 'https://github.com/Badger-Finance/badger-hackathon/tree/badger-portfolio-hackathon',
   };
-
   return (
     <div className={classes.rootContainer}>
-      <AssetBalances />
+      <BoostBox />
+      <PendingBox />
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
       </Typography>
@@ -90,5 +85,4 @@ const Portfolio = observer(() => {
     </div>
   );
 });
-
 export default Portfolio;

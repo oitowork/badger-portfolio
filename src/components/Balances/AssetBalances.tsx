@@ -69,7 +69,7 @@ const AssetBalances = observer(() => {
       <HeaderBalance
         title="Asset Balances"
         subTitle1="Assets that are in your wallet"
-        balance={30000}
+        balance={account?.nonNativeBalance}
         subTitle2="Your total  asset holdings"
       />
       <TableContainer component={Paper} className={classes.tableContainer}>
@@ -83,40 +83,42 @@ const AssetBalances = observer(() => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow>
-              <TableCell align="left">
-                <Typography variant="h6">iBTC</Typography>
-                <Typography variant="body1">$ 10,249.00</Typography>
-              </TableCell>
-              <TableCell align="center">
-                <Typography variant="h6">33.33%</Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography variant="h6">$ 10.00</Typography>
-                <Typography variant="body1">0.00008 BTC</Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography variant="h6">10.29</Typography>
-                <Typography variant="body1">$ 10,249.00</Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align="left">
-                <Typography variant="h6">iBTC</Typography>
-                <Typography variant="body1">$ 10,249.00</Typography>
-              </TableCell>
-              <TableCell align="center">
-                <Typography variant="h6">33.33%</Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography variant="h6">$ 10.00</Typography>
-                <Typography variant="body1">0.00008 BTC</Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography variant="h6">10.29</Typography>
-                <Typography variant="body1">$ 10,249.00</Typography>
-              </TableCell>
-            </TableRow>
+            {account?.balances.map(({ tokens }) =>
+              tokens.map(({ name, balance, value, decimals }) => {
+                const priceValue = value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                return (
+                  <TableRow key={name}>
+                    <TableCell align="left">
+                      <Typography variant="h6">{name}</Typography>
+                      <Typography variant="body1">{priceValue}</Typography>
+                    </TableCell>
+                    <TableCell align="center">
+                      <Typography variant="h6">
+                        {(value / account?.nonNativeBalance).toLocaleString(undefined, {
+                          style: 'percent',
+                          minimumFractionDigits: 2,
+                        })}
+                      </Typography>
+                    </TableCell>
+                    <TableCell align="right">
+                      <Typography variant="h6">
+                        {(balance / value).toLocaleString('en-US', {
+                          style: 'currency',
+                          currency: 'USD',
+                          minimumFractionDigits: decimals,
+                        })}
+                      </Typography>
+                      <Typography variant="body1">0.00008 BTC</Typography>
+                    </TableCell>
+                    <TableCell align="right">
+                      <Typography variant="h6">{balance.toFixed(2)}</Typography>
+                      <Typography variant="body1">{priceValue}</Typography>
+                    </TableCell>
+                  </TableRow>
+                );
+              }),
+            )}
+            )
           </TableBody>
         </Table>
       </TableContainer>

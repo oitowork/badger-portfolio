@@ -36,7 +36,7 @@ const useStyles = makeStyles(() => ({
     },
     '& tbody tr': {
       lineHeight: '24px',
-      '& h6': {
+      '& h5': {
         color: '#fff',
         fontSize: '16px',
       },
@@ -56,6 +56,7 @@ const useStyles = makeStyles(() => ({
   },
   text: {
     color: '#F2A627',
+    fontSize: '16px',
   },
   footer: {
     height: '36px',
@@ -75,7 +76,7 @@ const StrategyBalances = observer(() => {
       <HeaderBalance
         title="Strategy Balances"
         subTitle1="Balances across all strategies"
-        balance={30000}
+        balance={account?.nativeBalance}
         subTitle2="Your total strategy balances"
       />
       <TableContainer component={Paper} className={classes.tableContainer}>
@@ -89,24 +90,41 @@ const StrategyBalances = observer(() => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow>
-              <TableCell align="left">
-                <Typography variant="h6">wrapped BTC/Digg</Typography>
-                <Typography variant="body1">$ 10,249.00</Typography>
-              </TableCell>
-              <TableCell align="center">
-                <Typography variant="h6">43.33%</Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography className={classes.text} variant="h6">
-                  43.33%
-                </Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography variant="h6">10.29</Typography>
-                <Typography variant="body1">$ 10,249.00</Typography>
-              </TableCell>
-            </TableRow>
+            {account?.balances.map(({ name, value, depositedBalance, balance }) => {
+              const yearlyROI = (balance - depositedBalance) / depositedBalance;
+              return (
+                <TableRow key={name}>
+                  <TableCell align="left">
+                    <Typography variant="h5">{name}</Typography>
+                    <Typography variant="body1">
+                      {value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Typography variant="h5">
+                      {(value / account?.nativeBalance).toLocaleString(undefined, {
+                        style: 'percent',
+                        minimumFractionDigits: 2,
+                      })}
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="right">
+                    <Typography className={classes.text} variant="h6">
+                      {yearlyROI.toLocaleString(undefined, {
+                        style: 'percent',
+                        minimumFractionDigits: 2,
+                      })}
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="right">
+                    <Typography variant="h5">{depositedBalance.toFixed(2)}</Typography>
+                    <Typography variant="body1">
+                      {value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
