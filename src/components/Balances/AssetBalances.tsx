@@ -12,6 +12,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import { Typography } from '@material-ui/core';
 import HeaderBalance from './HeaderBalance';
+
 const useStyles = makeStyles(() => ({
   container: {
     maxWidth: '1230px',
@@ -63,7 +64,7 @@ const useStyles = makeStyles(() => ({
 const AssetBalances = observer(() => {
   const classes = useStyles();
   const store = React.useContext(StoreContext);
-  const { account } = store;
+  const { account, btcPrice } = store;
   return (
     <Container className={classes.container}>
       <HeaderBalance
@@ -102,13 +103,13 @@ const AssetBalances = observer(() => {
                     </TableCell>
                     <TableCell align="right">
                       <Typography variant="h6">
-                        {(balance / value).toLocaleString('en-US', {
+                        {(value / balance).toLocaleString('en-US', {
                           style: 'currency',
                           currency: 'USD',
-                          minimumFractionDigits: decimals,
+                          minimumFractionDigits: 2,
                         })}
                       </Typography>
-                      <Typography variant="body1">0.00008 BTC</Typography>
+                      <Typography variant="body1"> BTC</Typography>
                     </TableCell>
                     <TableCell align="right">
                       <Typography variant="h6">{balance.toFixed(2)}</Typography>
