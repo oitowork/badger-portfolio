@@ -9,18 +9,18 @@ import { StoreContext } from '..';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    background: '#2B2B2B, 100%',
+    background: '#2B2B2B',
     borderRadius: '16px',
     boxShadow: ' 0px 4px 4px rgba(0, 0, 0, 0.25)',
     display: 'flex',
     flexDirection: 'column',
     height: ' 191px',
     padding: '0px',
-    width: '100%',
-    [theme.breakpoints.down('xs')]: {
-      padding: '0 33px',
-      margin: '0 10px',
-    },
+    width: '90%',
+    marginLeft: '16px',
+    marginRight: '16px',
+    marginTop: '20px',
+    marginBottom: '20px',
   },
   title: {
     color: '#FFFFFF',

@@ -8,9 +8,23 @@ import { StoreContext } from '..';
 import ReactJson from 'react-json-view';
 import BoostBox from './BoostBox';
 import PendingBox from './PendingBox';
+import Networth from './Networth';
+import AssetBalances from './Balances/AssetBalances';
+import StrategyBalances from './Balances/StrategyBalances';
+
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
+  },
+  boxes: {
+    width: '90%',
+    marginLeft: '5%',
+    height: 228,
+    background: '#181818',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 33,
   },
   links: {
     display: 'flex',
@@ -55,8 +69,16 @@ const Portfolio = observer(() => {
   };
   return (
     <div className={classes.rootContainer}>
-      <BoostBox />
-      <PendingBox />
+      <div className={classes.boxes}>
+        <Networth />
+        <PendingBox />
+        <BoostBox />
+      </div>
+      <div>
+        <AssetBalances />
+        <StrategyBalances />
+      </div>
+
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
       </Typography>
