@@ -12,7 +12,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import { Typography } from '@material-ui/core';
 import HeaderBalance from './HeaderBalance';
-
 import { TokenBalance } from '../../model/token-balance.interface';
 const useStyles = makeStyles((theme) => ({
   container: {
