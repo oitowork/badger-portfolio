@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import { Account } from '../model/account.interface';
 
 export class RootStore {
-  private baseUrl = 'https://staging-api.badger.finance/v2';
+  private baseUrl = 'https://api.badger.finance/v2';
   public router: RouterStore<RootStore>;
   public account?: Account;
 
