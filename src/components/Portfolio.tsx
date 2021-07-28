@@ -6,8 +6,13 @@ import React from 'react';
 import { useContext } from 'react';
 import { StoreContext } from '..';
 import ReactJson from 'react-json-view';
+<<<<<<< HEAD
 import AssetAllocation from './assetAllocation';
 
+=======
+import BoostBox from './BoostBox';
+import PendingBox from './PendingBox';
+>>>>>>> upstream/main
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
@@ -44,24 +49,23 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
 const Portfolio = observer(() => {
   const classes = useStyles();
   const store = useContext(StoreContext);
   const { account } = store;
 
-  // const resources: Record<string, string> = {
-  //   'API Documentation': 'https://docs.badger.finance/',
-  //   'Portfolio Figma': 'https://www.figma.com/file/RkfjApAEdctYaKT3JgiH1M/Badger-Portfolio?node-id=0%3A1',
-  //   'Github Repository': 'https://github.com/Badger-Finance/badger-hackathon/tree/badger-portfolio-hackathon',
-  // };
+  const resources: Record<string, string> = {
+    'API Documentation': 'https://docs.badger.finance/',
+    'Portfolio Figma': 'https://www.figma.com/file/RkfjApAEdctYaKT3JgiH1M/Badger-Portfolio?node-id=0%3A1',
+    'Github Repository': 'https://github.com/Badger-Finance/badger-hackathon/tree/badger-portfolio-hackathon',
+  };
 
   return (
     <div className={classes.rootContainer}>
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
       </Typography>
-      {/* {Object.entries(resources).map((res) => (
+      {Object.entries(resources).map((res) => (
         <div key={res[0]} className={classes.links}>
           <Typography align="right">{res[0]}</Typography>
           <a href={res[1]} target="_blank" rel="noreferrer" className={classes.anchor}>
@@ -69,7 +73,7 @@ const Portfolio = observer(() => {
             <ExitToAppIcon />
           </a>
         </div>
-      ))} */}
+      ))}
       <AssetAllocation />
       <Typography variant="h5" align="center" className={classes.header}>
         Example Response
@@ -87,5 +91,4 @@ const Portfolio = observer(() => {
     </div>
   );
 });
-
 export default Portfolio;
