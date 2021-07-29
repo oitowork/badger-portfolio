@@ -18,10 +18,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       padding: '0 33px',
     },
-    marginLeft: '16px',
-    marginRight: '16px',
-    marginTop: '20px',
-    marginBottom: '20px',
+    margin: '20px 8px',
   },
   title: {
     fontStyle: 'normal',
@@ -47,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     background: '#121212',
-    borderRadius: '4px',
+    borderRadius: 4,
     color: '#fff',
     '&:hover': {
       background: '#121212',
@@ -55,6 +52,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       width: '100%',
     },
+    width: 250,
+    height: 32,
   },
 }));
 const PendingBox = observer(() => {

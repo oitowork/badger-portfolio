@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
     backgroundColor: '#292929',
     color: '#Ccd6db',
+    fontFamily: 'IBM Plex Mono IBM Plex Sans',
   },
 }));
 export default function App(): JSX.Element {

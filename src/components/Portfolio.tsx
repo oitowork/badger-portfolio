@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { Typography, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -23,8 +23,19 @@ const useStyles = makeStyles((theme) => ({
     background: '#181818',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     padding: 33,
+    border: '4px solid #8617AD',
+  },
+  boxBalances: {
+    background: '#181818',
+    width: '90%',
+    marginLeft: '5%',
+    marginTop: '21px',
+    marginBottom: '21px',
+    height: 'auto',
+    padding: 33,
+    border: '4px solid #8617AD',
   },
   links: {
     display: 'flex',
@@ -74,11 +85,12 @@ const Portfolio = observer(() => {
         <PendingBox />
         <BoostBox />
       </div>
-      <div>
+      <Box className={classes.boxBalances}>
         <AssetBalances />
+      </Box>
+      <Box className={classes.boxBalances}>
         <StrategyBalances />
-      </div>
-
+      </Box>
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
       </Typography>

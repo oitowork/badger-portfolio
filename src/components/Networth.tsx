@@ -1,9 +1,9 @@
+import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import { observer } from 'mobx-react-lite';
-import React from 'react';
 import { useContext } from 'react';
 import { StoreContext } from '..';
 
@@ -16,24 +16,21 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     height: ' 191px',
     padding: '0px',
-    width: '90%',
-    marginLeft: '16px',
-    marginRight: '16px',
-    marginTop: '20px',
-    marginBottom: '20px',
+    width: '595px',
+    margin: '20px 8px',
   },
   title: {
     color: '#FFFFFF',
     fontSize: '32px',
     fontStyle: 'normal',
     fontWeight: 'normal',
-    fonteHight: 'normal',
     lineHeight: '40px',
-    paddingLeft: '20px',
-    paddingTop: '30px',
+    marginLeft: '20px',
+    marginTop: '30px',
+    fontFamily: 'IBM Plex Mono',
   },
   subtitle: {
-    color: ' #747474',
+    color: '#747474',
     fontSize: '20px',
     fontWeight: 'normal',
     lineHeight: '28px',
@@ -41,6 +38,8 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     alignItems: 'center',
+    marginBottom: '20px',
+    marginLeft: '20px',
   },
   alignment: {
     display: 'flex',
@@ -49,10 +48,10 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '20px',
   },
   text: {
-    margin: '1%',
-    width: '20%',
+    width: 'auto',
+    margin: '3%',
     color: '##FFFFFF',
-    fontSize: '20px',
+    fontSize: '16px',
     fontWeight: 'normal',
   },
   undertext: {
@@ -101,11 +100,20 @@ const NetWorth = observer(() => {
           <span className={classes.undertext}>ROI in % </span>
         </Typography>
         <Typography className={classes.text}>
-          {`${sunRoi.toLocaleString()}`}
+          {`${sunRoi.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2,
+          })}`}
           <span className={classes.undertext}>ROI in $ value</span>
         </Typography>
         <Typography className={classes.text}>
-          ${account == null ? 'Loading' : account.earnedValue.toLocaleString()}
+          $
+          {account == null
+            ? 'Loading'
+            : account.earnedValue.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+              })}
           <span className={classes.undertext}>Earned $Badger</span>
         </Typography>
       </Box>
