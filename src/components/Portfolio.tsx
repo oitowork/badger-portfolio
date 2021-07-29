@@ -1,12 +1,10 @@
-import { Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
+import React from 'react';
+import { makeStyles, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import React from 'react';
 import { useContext } from 'react';
 import { StoreContext } from '..';
 import ReactJson from 'react-json-view';
-
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
@@ -24,6 +22,14 @@ const useStyles = makeStyles((theme) => ({
   header: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(3),
+  },
+  headerPortolio: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  chartBox: {
+    display: 'flex',
   },
   anchor: {
     textDecoration: 'none',
@@ -47,7 +53,6 @@ const Portfolio = observer(() => {
   const classes = useStyles();
   const store = useContext(StoreContext);
   const { account } = store;
-
   const resources: Record<string, string> = {
     'API Documentation': 'https://docs.badger.finance/',
     'Portfolio Figma': 'https://www.figma.com/file/RkfjApAEdctYaKT3JgiH1M/Badger-Portfolio?node-id=0%3A1',
