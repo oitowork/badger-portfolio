@@ -1,18 +1,27 @@
-import React from 'react';
-import { makeStyles, Typography } from '@material-ui/core';
+import React, { useContext } from 'react';
+import { makeStyles, Typography, Card } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { useContext } from 'react';
 import { StoreContext } from '..';
 import ReactJson from 'react-json-view';
 import BoostBox from './BoostBox';
 import PendingBox from './PendingBox';
-import NetWorth from './Networth';
+import Networth from './Networth';
 import AssetBalances from './Balances/AssetBalances';
 import StrategyBalances from './Balances/StrategyBalances';
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
+  },
+  boxes: {
+    width: '90%',
+    marginLeft: '5%',
+    height: 228,
+    background: '#181818',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 33,
   },
   links: {
     display: 'flex',
@@ -32,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'row',
+    background: 'transparent',
   },
   chartBox: {
     display: 'flex',
@@ -57,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 const Portfolio = observer(() => {
   const classes = useStyles();
   const store = useContext(StoreContext);
-  const { account, btcPrice } = store;
+  const { account } = store;
   const resources: Record<string, string> = {
     'API Documentation': 'https://docs.badger.finance/',
     'Portfolio Figma': 'https://www.figma.com/file/RkfjApAEdctYaKT3JgiH1M/Badger-Portfolio?node-id=0%3A1',
@@ -65,14 +75,15 @@ const Portfolio = observer(() => {
   };
   return (
     <div className={classes.rootContainer}>
-      <div className={classes.headerPortolio}>
-        <NetWorth />
+      <Card className={classes.headerPortolio}>
+        <Networth />
         <PendingBox />
         <BoostBox />
+      </Card>
+      <div>
+        <AssetBalances />
+        <StrategyBalances />
       </div>
-      <AssetBalances />
-      <StrategyBalances />
-
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
       </Typography>

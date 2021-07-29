@@ -1,26 +1,25 @@
+import React, { useContext } from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import { observer } from 'mobx-react-lite';
-import React from 'react';
-import { useContext } from 'react';
 import { StoreContext } from '..';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    background: '#2B2B2B, 100%',
+    background: '#2B2B2B',
     borderRadius: '16px',
     boxShadow: ' 0px 4px 4px rgba(0, 0, 0, 0.25)',
     display: 'flex',
     flexDirection: 'column',
     height: ' 191px',
     padding: '0px',
-    width: '100%',
-    [theme.breakpoints.down('xs')]: {
-      padding: '0 33px',
-      margin: '0 10px',
-    },
+    width: '90%',
+    marginLeft: '16px',
+    marginRight: '16px',
+    marginTop: '20px',
+    marginBottom: '20px',
   },
   title: {
     color: '#FFFFFF',
@@ -51,9 +50,10 @@ const useStyles = makeStyles((theme) => ({
   text: {
     margin: '1%',
     width: '20%',
-    color: '##FFFFFF',
+    color: '#FFFFFF',
     fontSize: '20px',
     fontWeight: 'normal',
+    padding: '10px',
   },
   undertext: {
     color: '#747474',
@@ -88,7 +88,12 @@ const NetWorth = observer(() => {
     <Container maxWidth="sm" className={classes.container}>
       <Box className={classes.box}>
         <Typography variant="h3" align="left" className={classes.title}>
-          ${account == null ? 'Loading' : account.value.toLocaleString()}
+          $
+          {account == null
+            ? 'Loading'
+            : account.value.toLocaleString(undefined, {
+                minimumIntegerDigits: 2,
+              })}
         </Typography>
         <Typography variant="h6" align="left" className={classes.subtitle}>
           Your neth worth
@@ -101,11 +106,18 @@ const NetWorth = observer(() => {
           <span className={classes.undertext}>ROI in % </span>
         </Typography>
         <Typography className={classes.text}>
-          {`${sunRoi.toLocaleString()}`}
+          {`${sunRoi.toLocaleString(undefined, {
+            minimumIntegerDigits: 2,
+          })}`}
           <span className={classes.undertext}>ROI in $ value</span>
         </Typography>
         <Typography className={classes.text}>
-          ${account == null ? 'Loading' : account.earnedValue.toLocaleString()}
+          $
+          {account == null
+            ? 'Loading'
+            : account.earnedValue.toLocaleString(undefined, {
+                minimumIntegerDigits: 2,
+              })}
           <span className={classes.undertext}>Earned $Badger</span>
         </Typography>
       </Box>

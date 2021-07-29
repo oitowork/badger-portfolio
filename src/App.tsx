@@ -2,7 +2,6 @@ import React from 'react';
 import { MobxRouter } from 'mobx-router';
 import { makeStyles } from '@material-ui/core';
 import store from './mobx/store';
-
 const useStyles = makeStyles((theme) => ({
   appContainer: {
     maxWidth: '100%',
@@ -12,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
     color: '#Ccd6db',
   },
 }));
-
 export default function App(): JSX.Element {
   const classes = useStyles();
   return (
