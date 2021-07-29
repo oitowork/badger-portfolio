@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     background: '#181818',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space between',
     padding: 33,
   },
   links: {

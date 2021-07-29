@@ -16,10 +16,9 @@ const useStyles = makeStyles((theme) => ({
     height: ' 191px',
     padding: '0px',
     width: '90%',
-    marginLeft: '16px',
-    marginRight: '16px',
-    marginTop: '20px',
-    marginBottom: '20px',
+    margin: 'auto',
+    marginTop: '10%',
+    marginBottom: '10%',
   },
   title: {
     color: '#FFFFFF',

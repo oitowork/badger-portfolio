@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space between',
     padding: '36px 33px',
     width: '296px',
     height: ' 191px',
@@ -18,10 +18,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       padding: '0 33px',
     },
-    marginLeft: '16px',
-    marginRight: '16px',
-    marginTop: '20px',
-    marginBottom: '20px',
+    margin: 'auto',
+    marginBottom: '10%',
+    marginTop: '10%',
   },
   title: {
     fontStyle: 'normal',
@@ -48,6 +47,8 @@ const useStyles = makeStyles((theme) => ({
   button: {
     background: '#121212',
     borderRadius: '4px',
+    fontSize: '9px',
+    fontFamily: 'IBM Plex Sans',
     color: '#fff',
     '&:hover': {
       background: '#121212',
