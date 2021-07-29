@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 import { Typography, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
+=======
+import React, { useContext } from 'react';
+import { makeStyles, Typography, Card } from '@material-ui/core';
+>>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
 import { observer } from 'mobx-react-lite';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import React from 'react';
-import { useContext } from 'react';
 import { StoreContext } from '..';
 import ReactJson from 'react-json-view';
 import BoostBox from './BoostBox';
@@ -11,7 +14,6 @@ import PendingBox from './PendingBox';
 import Networth from './Networth';
 import AssetBalances from './Balances/AssetBalances';
 import StrategyBalances from './Balances/StrategyBalances';
-
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
@@ -51,6 +53,15 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(3),
   },
+  headerPortolio: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    background: 'transparent',
+  },
+  chartBox: {
+    display: 'flex',
+  },
   anchor: {
     textDecoration: 'none',
     color: 'inherit',
@@ -80,17 +91,26 @@ const Portfolio = observer(() => {
   };
   return (
     <div className={classes.rootContainer}>
-      <div className={classes.boxes}>
+      <Card className={classes.headerPortolio}>
         <Networth />
         <PendingBox />
         <BoostBox />
+<<<<<<< HEAD
       </div>
       <Box className={classes.boxBalances}>
+=======
+      </Card>
+      <div>
+>>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
         <AssetBalances />
       </Box>
       <Box className={classes.boxBalances}>
         <StrategyBalances />
+<<<<<<< HEAD
       </Box>
+=======
+      </div>
+>>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
       </Typography>
