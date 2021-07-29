@@ -84,7 +84,7 @@ const AssetBalances = observer(() => {
           </TableHead>
           <TableBody>
             {account?.balances.map(({ tokens }) =>
-              tokens.map(({ name, balance, value, decimals }) => {
+              tokens.map(({ name, balance, value }) => {
                 const priceValue = value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
                 return (
                   <TableRow key={name}>
@@ -102,10 +102,10 @@ const AssetBalances = observer(() => {
                     </TableCell>
                     <TableCell align="right">
                       <Typography variant="h6">
-                        {(balance / value).toLocaleString('en-US', {
+                        {(value / balance).toLocaleString('en-US', {
                           style: 'currency',
                           currency: 'USD',
-                          minimumFractionDigits: decimals,
+                          minimumFractionDigits: 2,
                         })}
                       </Typography>
                       <Typography variant="body1">0.00008 BTC</Typography>

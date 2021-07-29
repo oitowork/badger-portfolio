@@ -1,18 +1,12 @@
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
-// import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import React from 'react';
 import { useContext } from 'react';
 import { StoreContext } from '..';
 import ReactJson from 'react-json-view';
-<<<<<<< HEAD
-import AssetAllocation from './assetAllocation';
 
-=======
-import BoostBox from './BoostBox';
-import PendingBox from './PendingBox';
->>>>>>> upstream/main
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
@@ -74,7 +68,6 @@ const Portfolio = observer(() => {
           </a>
         </div>
       ))}
-      <AssetAllocation />
       <Typography variant="h5" align="center" className={classes.header}>
         Example Response
       </Typography>

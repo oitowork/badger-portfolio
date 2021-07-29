@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Typography, makeStyles, Box, Container, Avatar } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import { StoreContext } from '..';
+import AssetBalanceChart from './charts/assetBalanceChart';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -30,16 +31,30 @@ const AssetAllocation = observer(() => {
   const store = useContext(StoreContext);
   const { account, tokenInfo } = store;
 
-  const tokens = account?.balances.map(({ tokens }) => tokens.map((item) => item));
+  // const tokens = account?.balances.map(({ tokens }) => tokens.map((item) => item));
 
-  console.log(tokenInfo);
-  console.log(tokens);
+  // const labels = account?.balances.map(({ tokens }) => tokens.map(({ name }) => name));
+  // const dataBalance = account?.balances.map(({ tokens }) =>
+  //   tokens.map(({ value }) =>
+  //     (value / account?.nonNativeBalance).toLocaleString(undefined, {
+  //       style: 'percent',
+  //       minimumFractionDigits: 2,
+  //     }),
+  //   ),
+  // );
+
+  // console.log(tokens);
+  // console.log(dataBalance);
+  // console.log(labels);
 
   return (
     <Container maxWidth="sm" className={classes.container}>
       <Typography>Titulo</Typography>
-      <Avatar alt={''} src="/static/images/avatar/1.jpg" />;<Box maxWidth="xs=6">grafico</Box>
-      <Box maxWidth="xs=6"></Box>
+      <Avatar alt={''} src="/static/images/avatar/1.jpg" />
+      <Box maxWidth="xs=6">grafico</Box>
+      <Box maxWidth="xs=6">
+        <AssetBalanceChart />
+      </Box>
     </Container>
   );
 });
