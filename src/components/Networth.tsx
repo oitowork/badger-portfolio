@@ -1,9 +1,17 @@
+<<<<<<< HEAD
+import React from 'react';
+=======
 import React, { useContext } from 'react';
+>>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
 import { makeStyles, Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import { observer } from 'mobx-react-lite';
+<<<<<<< HEAD
+import { useContext } from 'react';
+=======
+>>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
 import { StoreContext } from '..';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,24 +23,21 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     height: ' 191px',
     padding: '0px',
-    width: '90%',
-    marginLeft: '16px',
-    marginRight: '16px',
-    marginTop: '20px',
-    marginBottom: '20px',
+    width: '595px',
+    margin: '20px 8px',
   },
   title: {
     color: '#FFFFFF',
     fontSize: '32px',
     fontStyle: 'normal',
     fontWeight: 'normal',
-    fonteHight: 'normal',
     lineHeight: '40px',
-    paddingLeft: '20px',
-    paddingTop: '30px',
+    marginLeft: '20px',
+    marginTop: '30px',
+    fontFamily: 'IBM Plex Mono',
   },
   subtitle: {
-    color: ' #747474',
+    color: '#747474',
     fontSize: '20px',
     fontWeight: 'normal',
     lineHeight: '28px',
@@ -40,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     alignItems: 'center',
+    marginBottom: '20px',
+    marginLeft: '20px',
   },
   alignment: {
     display: 'flex',
@@ -48,10 +55,17 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '20px',
   },
   text: {
+<<<<<<< HEAD
+    width: 'auto',
+    margin: '3%',
+    color: '##FFFFFF',
+    fontSize: '16px',
+=======
     margin: '1%',
     width: '20%',
     color: '#FFFFFF',
     fontSize: '20px',
+>>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
     fontWeight: 'normal',
     padding: '10px',
   },
@@ -106,8 +120,15 @@ const NetWorth = observer(() => {
           <span className={classes.undertext}>ROI in % </span>
         </Typography>
         <Typography className={classes.text}>
+<<<<<<< HEAD
+          {`${sunRoi.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2,
+=======
           {`${sunRoi.toLocaleString(undefined, {
             minimumIntegerDigits: 2,
+>>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
           })}`}
           <span className={classes.undertext}>ROI in $ value</span>
         </Typography>
@@ -115,8 +136,13 @@ const NetWorth = observer(() => {
           $
           {account == null
             ? 'Loading'
+<<<<<<< HEAD
+            : account.earnedValue.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+=======
             : account.earnedValue.toLocaleString(undefined, {
                 minimumIntegerDigits: 2,
+>>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
               })}
           <span className={classes.undertext}>Earned $Badger</span>
         </Typography>

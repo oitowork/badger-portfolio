@@ -15,10 +15,7 @@ const useStyles = makeStyles({
     background: '#2B2B2B',
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
     borderRadius: '16px',
-    marginLeft: '16px',
-    marginRight: '16px',
-    marginTop: '20px',
-    marginBottom: '20px',
+    margin: '20px 8px',
   },
   title: {
     fontStyle: 'normal',
