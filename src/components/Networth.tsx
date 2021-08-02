@@ -1,17 +1,10 @@
-<<<<<<< HEAD
 import React from 'react';
-=======
-import React, { useContext } from 'react';
->>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
 import { makeStyles, Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import { observer } from 'mobx-react-lite';
-<<<<<<< HEAD
 import { useContext } from 'react';
-=======
->>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
 import { StoreContext } from '..';
 
 const useStyles = makeStyles((theme) => ({
@@ -42,32 +35,26 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'normal',
     lineHeight: '28px',
     paddingLeft: '20px',
+    fontFamily: 'IBM Plex Sans',
   },
   box: {
-    alignItems: 'center',
-    marginBottom: '20px',
-    marginLeft: '20px',
+    alignItems: 'center !important',
+    paddingBottom: 20,
   },
   alignment: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    paddingLeft: '20px',
+    alignItems: 'center',
   },
   text: {
-<<<<<<< HEAD
     width: 'auto',
-    margin: '3%',
+    margin: '2%',
     color: '##FFFFFF',
     fontSize: '16px',
-=======
-    margin: '1%',
-    width: '20%',
-    color: '#FFFFFF',
-    fontSize: '20px',
->>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
     fontWeight: 'normal',
-    padding: '10px',
+    padding: '0px 10px',
+    fontFamily: 'IBM Plex Sans',
   },
   undertext: {
     color: '#747474',
@@ -76,14 +63,20 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignContent: 'space-between',
     alignItems: 'flex-start',
+    fontFamily: 'IBM Plex Sans',
   },
   divider: {
     backgroundColor: 'black',
     margin: '0px',
     padding: '0px',
   },
-  roi: {
+  roiSpotlight: {
     color: '#F2A627',
+    fontFamily: 'IBM Plex Mono',
+  },
+  roi: {
+    color: '##FFFFFF',
+    fontFamily: 'IBM Plex Mono',
   },
 }));
 
@@ -116,33 +109,23 @@ const NetWorth = observer(() => {
       <Divider variant="middle" className={classes.divider} />
       <Box className={classes.alignment}>
         <Typography className={classes.text}>
-          <span className={classes.roi}>+42.069% </span>
+          <span className={classes.roiSpotlight}>+42.069% </span>
           <span className={classes.undertext}>ROI in % </span>
         </Typography>
-        <Typography className={classes.text}>
-<<<<<<< HEAD
+        <Typography className={classes.roi}>
           {`${sunRoi.toLocaleString('en-US', {
             style: 'currency',
             currency: 'USD',
             minimumFractionDigits: 2,
-=======
-          {`${sunRoi.toLocaleString(undefined, {
-            minimumIntegerDigits: 2,
->>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
           })}`}
           <span className={classes.undertext}>ROI in $ value</span>
         </Typography>
-        <Typography className={classes.text}>
+        <Typography className={classes.roi}>
           $
           {account == null
             ? 'Loading'
-<<<<<<< HEAD
             : account.earnedValue.toLocaleString('en-US', {
                 minimumFractionDigits: 2,
-=======
-            : account.earnedValue.toLocaleString(undefined, {
-                minimumIntegerDigits: 2,
->>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
               })}
           <span className={classes.undertext}>Earned $Badger</span>
         </Typography>

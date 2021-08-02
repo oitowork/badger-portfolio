@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     margin: '20px 8px',
   },
   title: {
+    fontFamily: 'IBM Plex Mono',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: '24px',
@@ -29,6 +30,7 @@ const useStyles = makeStyles({
     background: 'none',
   },
   text: {
+    fontFamily: 'IBM Plex Sans',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: '13px',

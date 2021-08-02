@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: '24px',
+    fontFamily: 'IBM Plex Mono',
     lineHeight: '40px',
     display: 'flex',
     alignItems: 'center',
@@ -41,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: '#747474',
     marginBottom: '18px',
+    fontFamily: 'IBM Plex Sans !important',
   },
   button: {
     background: '#121212',
@@ -54,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
     },
     width: 250,
     height: 32,
+    fontFamily: 'IBM Plex Sans',
+    fontSize: '9px',
+    lineHeight: '9px',
   },
 }));
 const PendingBox = observer(() => {
