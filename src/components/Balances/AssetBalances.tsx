@@ -29,18 +29,21 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   table: {
+    fontFamily: 'IBM Plex Sans',
     width: '100%',
     overflow: 'auto',
     background: '#2B2B2B',
     padding: '0 18.5px',
 
     '& thead th': {
+      fontFamily: 'IBM Plex Sans',
       color: '#747474',
       fontSize: '13px',
       padding: '8px 18.5px',
       border: 'none',
     },
     '& tbody tr': {
+      fontFamily: 'IBM Plex Sans',
       lineHeight: '24px',
       '& h6': {
         color: '#fff',

@@ -41,6 +41,11 @@ const useStyles = makeStyles({
     color: '#747474',
     marginBottom: '18px',
   },
+  subtitle: {
+    fontFamily: 'IBM Plex Sans',
+    fontSize: 16,
+    color: '#fff',
+  },
 });
 const BoostBox = observer(() => {
   const classes = useStyles();
@@ -54,7 +59,7 @@ const BoostBox = observer(() => {
       <Typography variant="subtitle2" align="center" className={classes.text}>
         My Boost
       </Typography>
-      <Typography variant="h6" align="center">
+      <Typography variant="h6" align="center" className={classes.subtitle}>
         Rank No. {account?.boostRank}
       </Typography>
     </Box>
