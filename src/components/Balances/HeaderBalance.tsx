@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, makeStyles, Typography } from '@material-ui/core';
-const useStyle = makeStyles(() => ({
+const useStyle = makeStyles((theme) => ({
   header: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -9,8 +9,20 @@ const useStyle = makeStyles(() => ({
     padding: '20px 21px 31px 21px',
     background: '#1E1E1E',
     borderRadius: '16px 16px 0 0',
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      textAlign: 'center',
+    },
   },
   headerLeft: {
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: 10,
+      '& h2, & h5': {
+        textAlign: 'center',
+      },
+    },
     '& h2': {
       color: '#fff',
       fontSize: '20px',
@@ -25,6 +37,11 @@ const useStyle = makeStyles(() => ({
     },
   },
   headerRight: {
+    [theme.breakpoints.down('xs')]: {
+      '& h2': {
+        textAlign: 'center',
+      },
+    },
     '& h2': {
       color: '#F2A627',
       fontWeight: 'bold',
