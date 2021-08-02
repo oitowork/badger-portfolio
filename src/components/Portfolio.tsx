@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { Typography, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
-=======
 import React, { useContext } from 'react';
-import { makeStyles, Typography, Card } from '@material-ui/core';
->>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
+import { makeStyles, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { StoreContext } from '..';
@@ -21,12 +16,11 @@ const useStyles = makeStyles((theme) => ({
   boxes: {
     width: '90%',
     marginLeft: '5%',
-    height: 228,
     background: '#181818',
     display: 'flex',
+    flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 33,
     border: '4px solid #8617AD',
   },
   boxBalances: {
@@ -38,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
     height: 'auto',
     padding: 33,
     border: '4px solid #8617AD',
+    [theme.breakpoints.down(700)]: {
+      padding: '0 8px',
+    },
   },
   links: {
     display: 'flex',
@@ -91,26 +88,17 @@ const Portfolio = observer(() => {
   };
   return (
     <div className={classes.rootContainer}>
-      <Card className={classes.headerPortolio}>
+      <div className={classes.boxes}>
         <Networth />
         <PendingBox />
         <BoostBox />
-<<<<<<< HEAD
       </div>
-      <Box className={classes.boxBalances}>
-=======
-      </Card>
-      <div>
->>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
+      <div className={classes.boxBalances}>
         <AssetBalances />
-      </Box>
-      <Box className={classes.boxBalances}>
-        <StrategyBalances />
-<<<<<<< HEAD
-      </Box>
-=======
       </div>
->>>>>>> 50325c640d0bf86af763828ecd526c7ddfdf1c59
+      <div className={classes.boxBalances}>
+        <StrategyBalances />
+      </div>
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
       </Typography>
