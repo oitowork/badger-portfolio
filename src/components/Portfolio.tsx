@@ -16,12 +16,11 @@ const useStyles = makeStyles((theme) => ({
   boxes: {
     width: '90%',
     marginLeft: '5%',
-    height: 228,
     background: '#181818',
     display: 'flex',
+    flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 33,
     border: '4px solid #8617AD',
   },
   boxBalances: {

@@ -22,10 +22,10 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     maxHeight: 530,
-    borderRadius: '0',
+    borderRadius: 0,
 
-    [theme.breakpoints.only('xs')]: {
-      maxHeight: 550,
+    [theme.breakpoints.down('sm')]: {
+      maxHeight: 590,
     },
   },
   table: {
