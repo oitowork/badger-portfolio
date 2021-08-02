@@ -150,10 +150,10 @@ const AssetBalances = observer(() => {
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="h6">
-                      {(balance / value).toLocaleString('en-US', {
+                      {(value / balance).toLocaleString('en-US', {
                         style: 'currency',
                         currency: 'USD',
-                        minimumFractionDigits: 8,
+                        minimumFractionDigits: 2,
                       })}
                     </Typography>
                     <Typography variant="body1">0.00008 BTC</Typography>
