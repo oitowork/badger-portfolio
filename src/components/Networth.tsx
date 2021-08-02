@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     height: ' 191px',
     padding: '0px',
-    width: '595px',
+    maxWidth: '595px',
     margin: '20px 8px',
   },
   title: {
@@ -77,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
   roi: {
     color: '##FFFFFF',
     fontFamily: 'IBM Plex Mono',
+    padding: '0px 10px',
   },
 }));
 
@@ -95,11 +96,12 @@ const NetWorth = observer(() => {
     <Container maxWidth="sm" className={classes.container}>
       <Box className={classes.box}>
         <Typography variant="h3" align="left" className={classes.title}>
-          $
           {account == null
             ? 'Loading'
-            : account.value.toLocaleString(undefined, {
-                minimumIntegerDigits: 2,
+            : account.value.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
               })}
         </Typography>
         <Typography variant="h6" align="left" className={classes.subtitle}>
@@ -109,7 +111,7 @@ const NetWorth = observer(() => {
       <Divider variant="middle" className={classes.divider} />
       <Box className={classes.alignment}>
         <Typography className={classes.text}>
-          <span className={classes.roiSpotlight}>+42.069% </span>
+          <span className={classes.roiSpotlight}>+42.069%</span>
           <span className={classes.undertext}>ROI in % </span>
         </Typography>
         <Typography className={classes.roi}>
@@ -121,7 +123,6 @@ const NetWorth = observer(() => {
           <span className={classes.undertext}>ROI in $ value</span>
         </Typography>
         <Typography className={classes.roi}>
-          $
           {account == null
             ? 'Loading'
             : account.earnedValue.toLocaleString('en-US', {
