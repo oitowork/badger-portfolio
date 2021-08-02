@@ -3,7 +3,7 @@ import { makeStyles, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import { StoreContext } from '..';
 import Box from '@material-ui/core/Box';
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   box: {
     display: 'flex',
     flexDirection: 'column',
@@ -16,8 +16,13 @@ const useStyles = makeStyles({
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
     borderRadius: '16px',
     margin: '20px 8px',
+
+    [theme.breakpoints.down(720)]: {
+      width: '100%',
+    },
   },
   title: {
+    fontFamily: 'IBM Plex Mono',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: '24px',
@@ -29,6 +34,7 @@ const useStyles = makeStyles({
     background: 'none',
   },
   text: {
+    fontFamily: 'IBM Plex Sans',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: '13px',
@@ -39,7 +45,12 @@ const useStyles = makeStyles({
     color: '#747474',
     marginBottom: '18px',
   },
-});
+  subtitle: {
+    fontFamily: 'IBM Plex Sans',
+    fontSize: 16,
+    color: '#fff',
+  },
+}));
 const BoostBox = observer(() => {
   const classes = useStyles();
   const store = useContext(StoreContext);
@@ -52,7 +63,7 @@ const BoostBox = observer(() => {
       <Typography variant="subtitle2" align="center" className={classes.text}>
         My Boost
       </Typography>
-      <Typography variant="h6" align="center">
+      <Typography variant="h6" align="center" className={classes.subtitle}>
         Rank No. {account?.boostRank}
       </Typography>
     </Box>
