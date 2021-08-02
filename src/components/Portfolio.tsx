@@ -16,22 +16,18 @@ const useStyles = makeStyles((theme) => ({
   boxes: {
     width: '90%',
     marginLeft: '5%',
-    background: '#181818',
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
-    border: '4px solid #8617AD',
   },
   boxBalances: {
-    background: '#181818',
     width: '90%',
     marginLeft: '5%',
     marginTop: '21px',
     marginBottom: '21px',
     height: 'auto',
     padding: 33,
-    border: '4px solid #8617AD',
     [theme.breakpoints.down(700)]: {
       padding: '0 8px',
     },
