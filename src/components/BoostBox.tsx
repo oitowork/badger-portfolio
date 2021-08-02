@@ -3,7 +3,7 @@ import { makeStyles, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import { StoreContext } from '..';
 import Box from '@material-ui/core/Box';
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   box: {
     display: 'flex',
     flexDirection: 'column',
@@ -16,6 +16,10 @@ const useStyles = makeStyles({
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
     borderRadius: '16px',
     margin: '20px 8px',
+
+    [theme.breakpoints.down(720)]: {
+      width: '100%',
+    },
   },
   title: {
     fontFamily: 'IBM Plex Mono',
@@ -46,7 +50,7 @@ const useStyles = makeStyles({
     fontSize: 16,
     color: '#fff',
   },
-});
+}));
 const BoostBox = observer(() => {
   const classes = useStyles();
   const store = useContext(StoreContext);

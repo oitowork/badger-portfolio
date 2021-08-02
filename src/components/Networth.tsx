@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: ' 0px 4px 4px rgba(0, 0, 0, 0.25)',
     display: 'flex',
     flexDirection: 'column',
-    height: ' 191px',
     padding: '0px',
     maxWidth: '595px',
     margin: '20px 8px',
@@ -28,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '20px',
     marginTop: '30px',
     fontFamily: 'IBM Plex Mono',
+    [theme.breakpoints.down(490)]: {
+      fontSize: 24,
+      margin: '10px',
+      textAlign: 'center',
+    },
   },
   subtitle: {
     color: '#747474',
@@ -36,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '28px',
     paddingLeft: '20px',
     fontFamily: 'IBM Plex Sans',
+    [theme.breakpoints.down(490)]: {
+      textAlign: 'center',
+    },
   },
   box: {
     alignItems: 'center !important',
@@ -43,9 +50,14 @@ const useStyles = makeStyles((theme) => ({
   },
   alignment: {
     display: 'flex',
+    flexWrap: 'wrap',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    [theme.breakpoints.down(490)]: {
+      justifyContent: 'center',
+      margin: '10px',
+    },
   },
   text: {
     width: 'auto',
@@ -75,7 +87,6 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'IBM Plex Mono',
   },
   roi: {
-    color: '##FFFFFF',
     fontFamily: 'IBM Plex Mono',
     padding: '0px 10px',
   },

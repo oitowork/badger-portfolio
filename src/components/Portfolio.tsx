@@ -32,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
     height: 'auto',
     padding: 33,
     border: '4px solid #8617AD',
+    [theme.breakpoints.down(700)]: {
+      padding: '0 8px',
+    },
   },
   links: {
     display: 'flex',

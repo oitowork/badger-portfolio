@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       padding: '0 33px',
     },
+    [theme.breakpoints.down(720)]: {
+      width: '100%',
+    },
     margin: '20px 8px',
   },
   title: {
