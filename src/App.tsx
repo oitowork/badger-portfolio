@@ -17,7 +17,6 @@ export default function App(): JSX.Element {
   return (
     <div className={classes.appContainer}>
       <MobxRouter store={store} />
-      <NetWorth />
       <PendingBox />
     </div>
   );
