@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 0,
     boxShadow: ' 0px 0px 4px rgba(0, 0, 0, 0.25)',
     maxHeight: 530,
-    [theme.breakpoints.only('xs')]: {
-      maxHeight: 550,
+    [theme.breakpoints.down('sm')]: {
+      maxHeight: 590,
     },
   },
   table: {
