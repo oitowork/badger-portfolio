@@ -11,7 +11,6 @@ import TableBody from '@material-ui/core/TableBody';
 import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles((theme) => ({
   container: {
-    maxWidth: '1230px',
     width: '100%',
   },
   tableContainer: {
