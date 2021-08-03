@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import { makeStyles, Typography, List, ListItem } from '@material-ui/core';
+import { makeStyles, Typography, List, ListItem, Box } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -12,6 +12,7 @@ import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles((theme) => ({
   container: {
     maxWidth: '1230px',
+    width: '100%',
   },
   tableContainer: {
     [theme.breakpoints.down('sm')]: {
@@ -27,30 +28,31 @@ const useStyles = makeStyles((theme) => ({
   list: {
     display: 'flex',
   },
+  box: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
   tablecell: {
     color: '#FFFFFF',
     border: 'none',
   },
 
   table: {
-    width: '100%',
     borderBottom: 'none',
-    padding: '0',
-    margin: '0',
     '& thead th': {
       color: '#747474',
       fontSize: '13px',
       padding: '8px 18.5px',
       border: 'none',
     },
-    '&:nth-child(1)': {
-      backgroundColor: '#1E1E1E',
-    },
     '& tbody tr': {
       lineHeight: '24px',
-      '& h6': {
-        fontSize: '16px',
-      },
+    },
+    '& tbody tr:nth-child(odd)': {
+      background: '#1E1E1E',
+    },
+    '& tbody tr:nth-child(even)': {
+      background: '#111111',
     },
   },
 }));
@@ -62,7 +64,7 @@ const Holdings = observer(() => {
       <Typography align="left" variant="h5" className={classes.title}>
         Holdings
       </Typography>
-      <List className={classes.list}>
+      <List disablePadding className={classes.list}>
         <ListItem>Underlying Tokens</ListItem>
         <ListItem>Price</ListItem>
         <ListItem>Amount</ListItem>
@@ -114,6 +116,10 @@ const Holdings = observer(() => {
           </TableBody>
         </Table>
       </TableContainer>
+      <Box className={classes.box}>
+        <Typography>Total</Typography>
+        <Typography>$ 20,498.00 </Typography>
+      </Box>
     </Container>
   );
 });
