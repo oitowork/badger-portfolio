@@ -84,6 +84,7 @@ const NetWorth = observer(() => {
       sunRoi += token.value;
     });
   });
+
   return (
     <Container maxWidth="sm" className={classes.container}>
       <Box className={classes.box}>
