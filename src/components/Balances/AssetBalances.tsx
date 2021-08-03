@@ -88,7 +88,9 @@ const useStyles = makeStyles((theme) => ({
 const AssetBalances = observer(() => {
   const classes = useStyles();
   const store = React.useContext(StoreContext);
-  const { account } = store;
+  const { account, btcPrice } = store;
+  const oi = btcPrice?.['0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599'];
+  console.log(oi);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
