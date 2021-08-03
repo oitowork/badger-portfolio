@@ -2,8 +2,7 @@ import React from 'react';
 import { MobxRouter } from 'mobx-router';
 import { makeStyles } from '@material-ui/core';
 import store from './mobx/store';
-import NetWorth from './components/Networth';
-import PendingBox from './components/PendingBox';
+
 const useStyles = makeStyles((theme) => ({
   appContainer: {
     maxWidth: '100%',
