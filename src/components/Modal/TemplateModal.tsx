@@ -3,6 +3,10 @@ import { makeStyles, Typography, Divider } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import Box from '@material-ui/core/Box';
 import CloseIcon from '@material-ui/icons/Close';
+import Holdings from './Holdings';
+import MyBoostBreakdown from './MyBoostBreakdown';
+import TransactionHistory from './TransactionHistory';
+import VaultDetails from './VaultDetails';
 const useStyles = makeStyles((theme) => ({
   box: {
     background: '#222222',
@@ -46,6 +50,10 @@ const TemplateModal = observer(() => {
         <CloseIcon />
       </div>
       <Divider variant="inset" className={classes.divider} />
+      <VaultDetails />
+      <Holdings />
+      <MyBoostBreakdown />
+      <TransactionHistory />
     </Box>
   );
 });
