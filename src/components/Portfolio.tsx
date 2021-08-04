@@ -9,6 +9,7 @@ import PendingBox from './PendingBox';
 import Networth from './Networth';
 import AssetBalances from './Balances/AssetBalances';
 import StrategyBalances from './Balances/StrategyBalances';
+import VaultsScreen from './VaultsScreen';
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
@@ -78,6 +79,7 @@ const Portfolio = observer(() => {
       <Card className={classes.headerPortolio}>
         <Networth />
         <PendingBox />
+        <VaultsScreen />
         <BoostBox />
       </Card>
       <div>
