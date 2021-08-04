@@ -40,8 +40,6 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  // 859
-
   transactionHeader: {
     maxWidth: 900,
     '& ul': {

@@ -22,9 +22,12 @@ const useStyles = makeStyles((theme) => ({
   },
   alignments: {
     display: 'flex',
+    alignItems: 'center',
+    gap: 12,
   },
   title: {
     fontSize: 16,
+    marginBottom: 22,
   },
   smallTitle: {
     backgroundColor: 'black',

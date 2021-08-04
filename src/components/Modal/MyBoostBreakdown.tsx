@@ -6,8 +6,8 @@ import { makeStyles, List, ListItem, Box, Typography, Container } from '@materia
 const useStyles = makeStyles((theme) => ({
   container: {
     maxWidth: 886,
+    marginBottom: 44,
   },
-
   titleBreakdown: {
     color: '#FFFFFF',
     fontSize: 16,

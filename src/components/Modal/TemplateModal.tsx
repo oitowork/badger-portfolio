@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     border: '1px solid #111111',
     boxSizing: 'border-box',
     boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.35)',
-    padding: '0 25px 24px 24px',
+    margin: '0 auto',
   },
   boxTitle: {
     height: 68,
@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    padding: '0 25px',
   },
   title: {
     fontFamily: 'IBM Plex Mono',
@@ -40,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
   modalItens: {
     marginTop: 19,
+    padding: '0 25px 24px 24px',
   },
 }));
 const TemplateModal = observer(() => {

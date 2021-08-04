@@ -11,7 +11,7 @@ import TableBody from '@material-ui/core/TableBody';
 import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles((theme) => ({
   container: {
-    width: '100%',
+    maxWidth: 866,
     marginBottom: 40,
   },
   tableContainer: {
@@ -20,23 +20,50 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   alignments: {
+    width: 76,
     display: 'flex',
+    alignItems: 'center',
+    '& p': {
+      fontSize: 13,
+      marginLeft: 10,
+    },
   },
   title: {
     fontSize: 16,
+    marginBottom: 20,
   },
   list: {
     display: 'flex',
-  },
-  box: {
-    display: 'flex',
     justifyContent: 'space-between',
+    marginBottom: 18,
+    '& li:first-child': {
+      width: 108,
+    },
+    '& li': {
+      display: 'block',
+      padding: 0,
+      width: 254,
+      fontSize: 13,
+    },
+    '& li:nth-child(n + 2)': {
+      textAlign: 'center',
+    },
   },
   tablecell: {
+    '&:first-child': {
+      width: 80,
+      paddingLeft: 24,
+    },
     color: '#FFFFFF',
     border: 'none',
+    textAlign: 'center',
+    width: 249,
+    padding: 0,
   },
-
+  tokenIcon: {
+    width: 24,
+    height: 24,
+  },
   table: {
     borderBottom: 'none',
     '& thead th': {
@@ -53,6 +80,25 @@ const useStyles = makeStyles((theme) => ({
     },
     '& tbody tr:nth-child(even)': {
       background: '#111111',
+    },
+  },
+  box: {
+    display: 'flex',
+    justifyContent: 'space-between',
+
+    '& h6': {
+      color: '#747474',
+      fontWeight: 'normal',
+      fontSize: 13,
+      marginTop: 16,
+    },
+    '& h5': {
+      color: '#fff',
+      fontWeight: 'bold',
+      fontSize: 16,
+      marginTop: 8,
+      border: '1px solid rgba(0, 0, 0, 0.08)',
+      fontFamily: 'IBM Plex Mono, Arial, sans-serif',
     },
   },
 }));
@@ -77,48 +123,50 @@ const Holdings = observer(() => {
               <TableCell className={classes.tablecell}>
                 <div className={classes.alignments}>
                   <Avatar
+                    className={classes.tokenIcon}
                     alt="Badger Image"
                     src="https://badger.finance/wp-content/uploads/2020/10/Copy-of-Untitled-39.png"
                   />
-                  <Typography>Badger</Typography>
+                  <Typography variant="body2">Badger</Typography>
                 </div>
               </TableCell>
               <TableCell className={classes.tablecell}>
-                <Typography>14.2</Typography>
+                <Typography variant="overline">14.2</Typography>
               </TableCell>
               <TableCell className={classes.tablecell}>
-                <Typography className={classes.tablecell}>10.2</Typography>
+                <Typography variant="overline">10.2</Typography>
               </TableCell>
               <TableCell className={classes.tablecell}>
-                <Typography>$ 10,249.00</Typography>
+                <Typography variant="overline">$ 10,249.00</Typography>
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell className={classes.tablecell}>
                 <div className={classes.alignments}>
                   <Avatar
+                    className={classes.tokenIcon}
                     alt="wBTC Image"
                     src="https://seeklogo.com/images/B/bitcoin-logo-594596D72F-seeklogo.com.png"
                   />
-                  <Typography>wBTC</Typography>
+                  <Typography variant="body2">wBTC</Typography>
                 </div>
               </TableCell>
               <TableCell className={classes.tablecell}>
-                <Typography>36,040.00</Typography>
+                <Typography variant="overline">36,040.00</Typography>
               </TableCell>
               <TableCell className={classes.tablecell}>
-                <Typography className={classes.tablecell}>0.004</Typography>
+                <Typography variant="overline">0.004</Typography>
               </TableCell>
               <TableCell className={classes.tablecell}>
-                <Typography>$ 10,249.00</Typography>
+                <Typography variant="overline">$ 10,249.00</Typography>
               </TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
       <Box className={classes.box}>
-        <Typography>Total</Typography>
-        <Typography>$ 20,498.00 </Typography>
+        <Typography variant="h6">Total</Typography>
+        <Typography variant="h5">$ 20,498.00 </Typography>
       </Box>
     </Container>
   );
