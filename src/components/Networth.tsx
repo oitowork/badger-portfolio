@@ -25,11 +25,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '32px',
     fontStyle: 'normal',
     fontWeight: 'normal',
+    margin: '19px 0 0 33px',
     lineHeight: '40px',
-    marginLeft: '20px',
-    marginTop: '30px',
     fontFamily: 'IBM Plex Mono',
-    [theme.breakpoints.down(490)]: {
+    [theme.breakpoints.down('xs')]: {
       fontSize: 24,
       margin: '10px',
       textAlign: 'center',
@@ -40,9 +39,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '20px',
     fontWeight: 'normal',
     lineHeight: '28px',
-    paddingLeft: '20px',
     fontFamily: 'IBM Plex Sans',
-    [theme.breakpoints.down(490)]: {
+    [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
     },
   },
@@ -50,6 +48,16 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     paddingBottom: '20px',
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column',
+    },
+  },
+  areaChart: {
+    width: '50% !important',
+    [theme.breakpoints.down('xs')]: {
+      width: '98% !important',
+      margin: 'auto',
+    },
   },
   alignment: {
     display: 'flex',
@@ -57,19 +65,22 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    margin: '15px 0 21px 0',
     [theme.breakpoints.down(490)]: {
       justifyContent: 'center',
-      margin: '10px',
     },
   },
   text: {
     width: 'auto',
-    margin: '2%',
-    color: '##FFFFFF',
+    paddingLeft: 33,
+    color: '#FFFFFF',
     fontSize: '16px',
     fontWeight: 'normal',
     padding: '0px 10px',
     fontFamily: 'IBM Plex Sans',
+    [theme.breakpoints.down(490)]: {
+      padding: 0,
+    },
   },
   undertext: {
     color: '#747474',
@@ -128,11 +139,11 @@ const NetWorth = observer(() => {
           </Typography>
         </Typography>
 
-        <ResponsiveContainer width="50%" height={100}>
+        <ResponsiveContainer className={classes.areaChart} height={100}>
           <AreaChart data={data}>
             <defs>
               <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#467D33" stopOpacity={0.4} style={{ border: '10px solid' }} />
+                <stop offset="0%" stopColor="#467D33" stopOpacity={0.4} />
                 <stop offset="90%" stopColor="#9AFF77" stopOpacity={0.05} />
               </linearGradient>
             </defs>
