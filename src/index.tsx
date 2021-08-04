@@ -18,5 +18,5 @@ ReactDOM.render(
     <CssBaseline />
     <App />
   </StoreProvider>,
-  document.getElementById('root'),
+  document.getElementById('root') || document.createElement('div'),
 );

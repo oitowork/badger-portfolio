@@ -1,59 +1,72 @@
+import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import { observer } from 'mobx-react-lite';
-import React from 'react';
 import { useContext } from 'react';
 import { StoreContext } from '..';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    background: '#2B2B2B, 100%',
+    background: '#2B2B2B',
     borderRadius: '16px',
     boxShadow: ' 0px 4px 4px rgba(0, 0, 0, 0.25)',
     display: 'flex',
     flexDirection: 'column',
-    height: ' 191px',
     padding: '0px',
-    width: '100%',
-    [theme.breakpoints.down('xs')]: {
-      padding: '0 33px',
-      margin: '0 10px',
-    },
+    maxWidth: '595px',
+    margin: '20px 8px',
   },
   title: {
     color: '#FFFFFF',
     fontSize: '32px',
     fontStyle: 'normal',
     fontWeight: 'normal',
-    fonteHight: 'normal',
     lineHeight: '40px',
-    paddingLeft: '20px',
-    paddingTop: '30px',
+    marginLeft: '20px',
+    marginTop: '30px',
+    fontFamily: 'IBM Plex Mono',
+    [theme.breakpoints.down(490)]: {
+      fontSize: 24,
+      margin: '10px',
+      textAlign: 'center',
+    },
   },
   subtitle: {
-    color: ' #747474',
+    color: '#747474',
     fontSize: '20px',
     fontWeight: 'normal',
     lineHeight: '28px',
     paddingLeft: '20px',
+    fontFamily: 'IBM Plex Sans',
+    [theme.breakpoints.down(490)]: {
+      textAlign: 'center',
+    },
   },
   box: {
-    alignItems: 'center',
+    alignItems: 'center !important',
+    paddingBottom: 20,
   },
   alignment: {
     display: 'flex',
+    flexWrap: 'wrap',
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    paddingLeft: '20px',
+    alignItems: 'center',
+    [theme.breakpoints.down(490)]: {
+      justifyContent: 'center',
+      margin: '10px',
+    },
   },
   text: {
-    margin: '1%',
-    width: '20%',
+    width: 'auto',
+    margin: '2%',
     color: '##FFFFFF',
-    fontSize: '20px',
+    fontSize: '16px',
     fontWeight: 'normal',
+    padding: '0px 10px',
+    fontFamily: 'IBM Plex Sans',
   },
   undertext: {
     color: '#747474',
@@ -62,14 +75,20 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignContent: 'space-between',
     alignItems: 'flex-start',
+    fontFamily: 'IBM Plex Sans',
   },
   divider: {
     backgroundColor: 'black',
     margin: '0px',
     padding: '0px',
   },
-  roi: {
+  roiSpotlight: {
     color: '#F2A627',
+    fontFamily: 'IBM Plex Mono',
+  },
+  roi: {
+    fontFamily: 'IBM Plex Mono',
+    padding: '0px 10px',
   },
 }));
 
@@ -89,7 +108,13 @@ const NetWorth = observer(() => {
     <Container maxWidth="sm" className={classes.container}>
       <Box className={classes.box}>
         <Typography variant="h3" align="left" className={classes.title}>
-          ${account == null ? 'Loading' : account.value.toLocaleString()}
+          {account == null
+            ? 'Loading'
+            : account.value.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+              })}
         </Typography>
         <Typography variant="h6" align="left" className={classes.subtitle}>
           Your neth worth
@@ -98,15 +123,23 @@ const NetWorth = observer(() => {
       <Divider variant="middle" className={classes.divider} />
       <Box className={classes.alignment}>
         <Typography className={classes.text}>
-          <span className={classes.roi}>+42.069% </span>
+          <span className={classes.roiSpotlight}>+42.069%</span>
           <span className={classes.undertext}>ROI in % </span>
         </Typography>
-        <Typography className={classes.text}>
-          {`${sunRoi.toLocaleString()}`}
+        <Typography className={classes.roi}>
+          {`${sunRoi.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2,
+          })}`}
           <span className={classes.undertext}>ROI in $ value</span>
         </Typography>
-        <Typography className={classes.text}>
-          ${account == null ? 'Loading' : account.earnedValue.toLocaleString()}
+        <Typography className={classes.roi}>
+          {account == null
+            ? 'Loading'
+            : account.earnedValue.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+              })}
           <span className={classes.undertext}>Earned $Badger</span>
         </Typography>
       </Box>

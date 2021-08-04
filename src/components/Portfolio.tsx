@@ -1,18 +1,37 @@
-import { Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
+import React, { useContext } from 'react';
+import { makeStyles, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import React from 'react';
-import { useContext } from 'react';
 import { StoreContext } from '..';
 import ReactJson from 'react-json-view';
-
 import BoostBox from './BoostBox';
 import PendingBox from './PendingBox';
-
+import Networth from './Networth';
+import StrategyBalances from './Balances/StrategyBalances';
+import TemplateModal from './Modal/TemplateModal';
+import AssetBalances from './Balances/AssetBalances';
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
+  },
+  boxes: {
+    width: '90%',
+    marginLeft: '5%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  boxBalances: {
+    width: '90%',
+    marginLeft: '5%',
+    marginTop: '21px',
+    marginBottom: '21px',
+    height: 'auto',
+    padding: 33,
+    [theme.breakpoints.down(700)]: {
+      padding: '0 8px',
+    },
   },
   links: {
     display: 'flex',
@@ -27,6 +46,15 @@ const useStyles = makeStyles((theme) => ({
   header: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(3),
+  },
+  headerPortolio: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    background: 'transparent',
+  },
+  chartBox: {
+    display: 'flex',
   },
   anchor: {
     textDecoration: 'none',
@@ -46,22 +74,31 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
 const Portfolio = observer(() => {
   const classes = useStyles();
   const store = useContext(StoreContext);
   const { account } = store;
-
   const resources: Record<string, string> = {
     'API Documentation': 'https://docs.badger.finance/',
     'Portfolio Figma': 'https://www.figma.com/file/RkfjApAEdctYaKT3JgiH1M/Badger-Portfolio?node-id=0%3A1',
     'Github Repository': 'https://github.com/Badger-Finance/badger-hackathon/tree/badger-portfolio-hackathon',
   };
-
   return (
     <div className={classes.rootContainer}>
-      <BoostBox />
-      <PendingBox />
+      <div className={classes.boxes}>
+        <Networth />
+        <PendingBox />
+        <BoostBox />
+      </div>
+      <div className={classes.boxBalances}>
+        <AssetBalances />
+      </div>
+      <div className={classes.boxBalances}>
+        <StrategyBalances />
+      </div>
+      <div className={classes.boxBalances}>
+        <TemplateModal />
+      </div>
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
       </Typography>
@@ -90,5 +127,4 @@ const Portfolio = observer(() => {
     </div>
   );
 });
-
 export default Portfolio;
