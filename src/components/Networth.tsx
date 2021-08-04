@@ -6,6 +6,8 @@ import Divider from '@material-ui/core/Divider';
 import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
 import { StoreContext } from '..';
+import { ResponsiveContainer, AreaChart, Area } from 'recharts';
+import { subDays } from 'date-fns';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -93,6 +95,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NetWorth = observer(() => {
+  const data = [];
+  for (let num = 10; num >= 0; num--)
+    data.push({
+      date: subDays(new Date(), num).toISOString().substr(0, 10),
+      value: 1 + Math.random(),
+    });
   const classes = useStyles();
   const store = useContext(StoreContext);
   const { account } = store;
@@ -106,6 +114,17 @@ const NetWorth = observer(() => {
   return (
     <Container maxWidth="sm" className={classes.container}>
       <Box className={classes.box}>
+        <ResponsiveContainer width="50%" height={100}>
+          <AreaChart data={data}>
+            <defs>
+              <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#467D33" stopOpacity={0.4} />
+                <stop offset="75%" stopColor="#467D33" stopOpacity={0.05} />
+              </linearGradient>
+            </defs>
+            <Area dataKey="value" stroke="#52B330" fill="url(#color)" />
+          </AreaChart>
+        </ResponsiveContainer>
         <Typography variant="h3" align="left" className={classes.title}>
           {account == null
             ? 'Loading'
