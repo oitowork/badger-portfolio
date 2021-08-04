@@ -13,6 +13,7 @@ import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles((theme) => ({
   container: {
     maxWidth: '1230px',
+    marginBottom: 28,
   },
   tableContainer: {
     [theme.breakpoints.down('sm')]: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   title: {
-    padding: '2%',
+    fontSize: 16,
   },
   smallTitle: {
     backgroundColor: 'black',
@@ -59,7 +60,7 @@ const VaultDetails = observer(() => {
   const classes = useStyles();
 
   return (
-    <Container className={classes.container}>
+    <Container disableGutters className={classes.container}>
       <Typography align="left" variant="h5" className={classes.title}>
         Vault Details
       </Typography>

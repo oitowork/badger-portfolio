@@ -12,6 +12,7 @@ import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles((theme) => ({
   container: {
     width: '100%',
+    marginBottom: 40,
   },
   tableContainer: {
     [theme.breakpoints.down('sm')]: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   title: {
-    padding: '2%',
+    fontSize: 16,
   },
   list: {
     display: 'flex',
@@ -59,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 const Holdings = observer(() => {
   const classes = useStyles();
   return (
-    <Container className={classes.container}>
+    <Container disableGutters className={classes.container}>
       <Typography align="left" variant="h5" className={classes.title}>
         Holdings
       </Typography>
