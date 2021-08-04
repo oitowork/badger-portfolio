@@ -47,8 +47,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   box: {
-    alignItems: 'center !important',
-    paddingBottom: 20,
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingBottom: '20px',
   },
   alignment: {
     display: 'flex',
@@ -114,6 +115,19 @@ const NetWorth = observer(() => {
   return (
     <Container maxWidth="sm" className={classes.container}>
       <Box className={classes.box}>
+        <Typography variant="h3" align="left" className={classes.title}>
+          {account == null
+            ? 'Loading'
+            : account.value.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+              })}
+          <Typography variant="h6" align="left" className={classes.subtitle}>
+            Your neth worth
+          </Typography>
+        </Typography>
+
         <ResponsiveContainer width="50%" height={100}>
           <AreaChart data={data}>
             <defs>
@@ -125,18 +139,6 @@ const NetWorth = observer(() => {
             <Area dataKey="value" stroke="#52B330" fill="url(#color)" />
           </AreaChart>
         </ResponsiveContainer>
-        <Typography variant="h3" align="left" className={classes.title}>
-          {account == null
-            ? 'Loading'
-            : account.value.toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 2,
-              })}
-        </Typography>
-        <Typography variant="h6" align="left" className={classes.subtitle}>
-          Your neth worth
-        </Typography>
       </Box>
       <Divider variant="middle" className={classes.divider} />
       <Box className={classes.alignment}>
