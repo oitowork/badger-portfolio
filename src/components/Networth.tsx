@@ -6,6 +6,8 @@ import Divider from '@material-ui/core/Divider';
 import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
 import { StoreContext } from '..';
+import { ResponsiveContainer, AreaChart, Area } from 'recharts';
+import { subDays } from 'date-fns';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -23,11 +25,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '32px',
     fontStyle: 'normal',
     fontWeight: 'normal',
+    margin: '19px 0 0 33px',
     lineHeight: '40px',
-    marginLeft: '20px',
-    marginTop: '30px',
     fontFamily: 'IBM Plex Mono',
-    [theme.breakpoints.down(490)]: {
+    [theme.breakpoints.down('xs')]: {
       fontSize: 24,
       margin: '10px',
       textAlign: 'center',
@@ -38,15 +39,25 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '20px',
     fontWeight: 'normal',
     lineHeight: '28px',
-    paddingLeft: '20px',
     fontFamily: 'IBM Plex Sans',
-    [theme.breakpoints.down(490)]: {
+    [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
     },
   },
   box: {
-    alignItems: 'center !important',
-    paddingBottom: 20,
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingBottom: '20px',
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column',
+    },
+  },
+  areaChart: {
+    width: '50% !important',
+    [theme.breakpoints.down('xs')]: {
+      width: '98% !important',
+      margin: 'auto',
+    },
   },
   alignment: {
     display: 'flex',
@@ -54,19 +65,22 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    margin: '15px 0 21px 0',
     [theme.breakpoints.down(490)]: {
       justifyContent: 'center',
-      margin: '10px',
     },
   },
   text: {
     width: 'auto',
-    margin: '2%',
-    color: '##FFFFFF',
+    paddingLeft: 33,
+    color: '#FFFFFF',
     fontSize: '16px',
     fontWeight: 'normal',
     padding: '0px 10px',
     fontFamily: 'IBM Plex Sans',
+    [theme.breakpoints.down(490)]: {
+      padding: 0,
+    },
   },
   undertext: {
     color: '#747474',
@@ -93,6 +107,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NetWorth = observer(() => {
+  const data = [];
+  for (let num = 10; num >= 0; num--)
+    data.push({
+      date: subDays(new Date(), num).toISOString().substr(0, 10),
+      value: 1 + Math.random(),
+    });
   const classes = useStyles();
   const store = useContext(StoreContext);
   const { account } = store;
@@ -114,10 +134,22 @@ const NetWorth = observer(() => {
                 currency: 'USD',
                 minimumFractionDigits: 2,
               })}
+          <Typography variant="h6" align="left" className={classes.subtitle}>
+            Your neth worth
+          </Typography>
         </Typography>
-        <Typography variant="h6" align="left" className={classes.subtitle}>
-          Your neth worth
-        </Typography>
+
+        <ResponsiveContainer className={classes.areaChart} height={100}>
+          <AreaChart data={data}>
+            <defs>
+              <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#467D33" stopOpacity={0.4} />
+                <stop offset="90%" stopColor="#9AFF77" stopOpacity={0.05} />
+              </linearGradient>
+            </defs>
+            <Area dataKey="value" stroke="#52B330" strokeWidth="3" fill="url(#color)" />
+          </AreaChart>
+        </ResponsiveContainer>
       </Box>
       <Divider variant="middle" className={classes.divider} />
       <Box className={classes.alignment}>
