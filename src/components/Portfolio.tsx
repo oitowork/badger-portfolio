@@ -1,13 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { useContext } from 'react';
 import { StoreContext } from '..';
 import ReactJson from 'react-json-view';
+import BoostBox from './BoostBox';
+import PendingBox from './PendingBox';
+import Networth from './Networth';
+import AssetBalances from './Balances/AssetBalances';
+import StrategyBalances from './Balances/StrategyBalances';
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
+  },
+  boxes: {
+    width: '90%',
+    marginLeft: '5%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  boxBalances: {
+    width: '90%',
+    marginLeft: '5%',
+    marginTop: '21px',
+    marginBottom: '21px',
+    height: 'auto',
+    padding: 33,
+    [theme.breakpoints.down(700)]: {
+      padding: '0 8px',
+    },
   },
   links: {
     display: 'flex',
@@ -27,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'row',
+    background: 'transparent',
   },
   chartBox: {
     display: 'flex',
@@ -61,6 +85,17 @@ const Portfolio = observer(() => {
 
   return (
     <div className={classes.rootContainer}>
+      <div className={classes.boxes}>
+        <Networth />
+        <PendingBox />
+        <BoostBox />
+      </div>
+      <div className={classes.boxBalances}>
+        <AssetBalances />
+      </div>
+      <div className={classes.boxBalances}>
+        <StrategyBalances />
+      </div>
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
       </Typography>
