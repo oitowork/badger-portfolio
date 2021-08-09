@@ -7,8 +7,9 @@ import ReactJson from 'react-json-view';
 import BoostBox from './BoostBox';
 import PendingBox from './PendingBox';
 import Networth from './Networth';
-import AssetBalances from './Balances/AssetBalances';
+// import AssetBalances from './Balances/AssetBalances';
 import StrategyBalances from './Balances/StrategyBalances';
+import AssetAllocation from './AssetAllocation';
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
@@ -91,7 +92,7 @@ const Portfolio = observer(() => {
         <BoostBox />
       </div>
       <div className={classes.boxBalances}>
-        <AssetBalances />
+        <AssetAllocation />
       </div>
       <div className={classes.boxBalances}>
         <StrategyBalances />

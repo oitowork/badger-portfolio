@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Typography, makeStyles, Box, Container, Avatar } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import { StoreContext } from '..';
-import AssetBalanceChart from './charts/assetBalanceChart';
+// import AssetBalanceChart from './charts/assetBalanceChart';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -30,6 +30,13 @@ const AssetAllocation = observer(() => {
   const classes = useStyles();
   const store = useContext(StoreContext);
   const { account, tokenInfo } = store;
+  // console.log(tokenInfo);
+
+  const oi = '0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6';
+  console.log(tokenInfo?.tokens.filter((symbol) => symbol.address === oi.toLowerCase()));
+
+  //"0x3472a5a71965499acd81997a54bba8d852c6e53d"
+  // console.log(account?.balances);
 
   // const tokens = account?.balances.map(({ tokens }) => tokens.map((item) => item));
 
@@ -47,14 +54,23 @@ const AssetAllocation = observer(() => {
   // console.log(dataBalance);
   // console.log(labels);
 
+  // React.useEffect(() => {
+  //   const getTokens = async () => {
+  //     const response = await fetch('https://api.badger.finance/v2/tokens');
+  //     const json = await response.json();
+  //     console.log(json);
+  //   };
+  //   getTokens();
+  // }, []);
   return (
     <Container maxWidth="sm" className={classes.container}>
       <Typography>Titulo</Typography>
-      <Avatar alt={''} src="/static/images/avatar/1.jpg" />
+      <Avatar
+        alt={''}
+        src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x88128580ACdD9c04Ce47AFcE196875747bF2A9f6/logo.png"
+      />
       <Box maxWidth="xs=6">grafico</Box>
-      <Box maxWidth="xs=6">
-        <AssetBalanceChart />
-      </Box>
+      <Box maxWidth="xs=6">{/* <AssetBalanceChart /> */}</Box>
     </Container>
   );
 });
