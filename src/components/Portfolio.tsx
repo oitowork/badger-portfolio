@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { makeStyles, Typography, Card } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { StoreContext } from '..';
@@ -17,12 +17,21 @@ const useStyles = makeStyles((theme) => ({
   boxes: {
     width: '90%',
     marginLeft: '5%',
-    height: 228,
-    background: '#181818',
     display: 'flex',
+    flexWrap: 'wrap',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+  },
+  boxBalances: {
+    width: '90%',
+    marginLeft: '5%',
+    marginTop: '21px',
+    marginBottom: '21px',
+    height: 'auto',
     padding: 33,
+    [theme.breakpoints.down(700)]: {
+      padding: '0 8px',
+    },
   },
   links: {
     display: 'flex',
@@ -76,14 +85,16 @@ const Portfolio = observer(() => {
   };
   return (
     <div className={classes.rootContainer}>
-      <Card className={classes.headerPortolio}>
+      <div className={classes.boxes}>
         <Networth />
         <PendingBox />
         <VaultsScreen />
         <BoostBox />
-      </Card>
-      <div>
+      </div>
+      <div className={classes.boxBalances}>
         <AssetBalances />
+      </div>
+      <div className={classes.boxBalances}>
         <StrategyBalances />
       </div>
       <Typography variant="h4" align="center" className={classes.header}>

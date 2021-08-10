@@ -22,25 +22,28 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     maxHeight: 530,
-    borderRadius: '0',
+    borderRadius: 0,
 
-    [theme.breakpoints.only('xs')]: {
-      maxHeight: 550,
+    [theme.breakpoints.down('sm')]: {
+      maxHeight: 590,
     },
   },
   table: {
+    fontFamily: 'IBM Plex Sans',
     width: '100%',
     overflow: 'auto',
     background: '#2B2B2B',
     padding: '0 18.5px',
 
     '& thead th': {
+      fontFamily: 'IBM Plex Sans',
       color: '#747474',
       fontSize: '13px',
       padding: '8px 18.5px',
       border: 'none',
     },
     '& tbody tr': {
+      fontFamily: 'IBM Plex Sans',
       lineHeight: '24px',
       '& h6': {
         color: '#fff',
@@ -147,10 +150,10 @@ const AssetBalances = observer(() => {
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="h6">
-                      {(balance / value).toLocaleString('en-US', {
+                      {(value / balance).toLocaleString('en-US', {
                         style: 'currency',
                         currency: 'USD',
-                        minimumFractionDigits: 8,
+                        minimumFractionDigits: 2,
                       })}
                     </Typography>
                     <Typography variant="body1">0.00008 BTC</Typography>
