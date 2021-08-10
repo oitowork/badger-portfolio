@@ -9,7 +9,7 @@ import PendingBox from './PendingBox';
 import Networth from './Networth';
 // import AssetBalances from './Balances/AssetBalances';
 import StrategyBalances from './Balances/StrategyBalances';
-import AssetAllocation from './AssetAllocation';
+import AssetAllocation from './Allocation/AssetAllocation';
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
