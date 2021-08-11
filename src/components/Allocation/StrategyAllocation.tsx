@@ -52,33 +52,10 @@ interface AllocationProps {
   subtext: string;
 }
 
-const AssetAllocation = observer(({ title, subtext }: AllocationProps) => {
+const StrategyAllocation = observer(({ title, subtext }: AllocationProps) => {
   const classes = useStyles();
   const store = useContext(StoreContext);
-  const { account, tokenInfo } = store;
-  // console.log(tokenInfo);
-
-  const oi = '0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6';
-  console.log(tokenInfo?.tokens.filter((symbol) => symbol.address === oi.toLowerCase()));
-
-  //"0x3472a5a71965499acd81997a54bba8d852c6e53d"
-  // console.log(account?.balances);
-
-  // const tokens = account?.balances.map(({ tokens }) => tokens.map((item) => item));
-
-  // const labels = account?.balances.map(({ tokens }) => tokens.map(({ name }) => name));
-  // const dataBalance = account?.balances.map(({ tokens }) =>
-  //   tokens.map(({ value }) =>
-  //     (value / account?.nonNativeBalance).toLocaleString(undefined, {
-  //       style: 'percent',
-  //       minimumFractionDigits: 2,
-  //     }),
-  //   ),
-  // );
-
-  // console.log(tokens);
-  // console.log(dataBalance);
-  // console.log(labels);
+  const { account } = store;
 
   return (
     <Container maxWidth="sm" className={classes.container}>
@@ -96,4 +73,4 @@ const AssetAllocation = observer(({ title, subtext }: AllocationProps) => {
   );
 });
 
-export default AssetAllocation;
+export default StrategyAllocation;
