@@ -1,7 +1,9 @@
-import React from 'react';
 import { makeStyles, Typography, Button } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import Box from '@material-ui/core/Box';
+import React from 'react';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 const useStyles = makeStyles((theme) => ({
   box: {
     overflow: 'hidden',
@@ -76,7 +78,63 @@ const useStyles = makeStyles((theme) => ({
       textTransform: 'none !important',
     },
   },
+  chart: {
+    backgroundColor: '#101010',
+    borderRadius: '8px',
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
 }));
+
+const data = [
+  {
+    name: 'Page A',
+    uv: 4000,
+    pv: 2400,
+  },
+  {
+    name: 'Page B',
+    uv: 3000,
+    pv: 1398,
+  },
+  {
+    name: 'Page C',
+    uv: 2000,
+    pv: 9800,
+  },
+  {
+    name: 'Page D',
+    uv: 2780,
+    pv: 3908,
+  },
+  {
+    name: 'Page E',
+    uv: 1890,
+    pv: 4800,
+  },
+  {
+    name: 'Page F',
+    uv: 2390,
+    pv: 3800,
+  },
+  {
+    name: 'Page G',
+    uv: 3490,
+    pv: 4300,
+  },
+];
+// const CustomTooltip = ({ name, uv, pv }) => {
+//   if (pv && uv && pv.lenght) {
+//     return (
+//       <div>
+//         <p>{name}</p>
+//         <p>{`Badger/wBTC ${uv}`}</p>
+//         <p>{`crvRenWBTC ${pv}`}</p>
+//       </div>
+//     );
+//   }
+// };
 const TemplateEarnings = observer(() => {
   const classes = useStyles();
   return (
@@ -123,6 +181,36 @@ const TemplateEarnings = observer(() => {
           </ul>
         </Box>
       </Box>
+      <ResponsiveContainer className={classes.chart} width="95%" aspect={3}>
+        <AreaChart
+          width={500}
+          height={300}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <defs>
+            <linearGradient id="colorcrv" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.9} />
+              <stop offset="95%" stopColor="#8884d8" stopOpacity={0.06} />
+            </linearGradient>
+            <linearGradient id="colorbad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.9} />
+              <stop offset="95%" stopColor="#82ca9d" stopOpacity={0.06} />
+            </linearGradient>
+          </defs>
+          <XAxis />
+          <YAxis />
+          <Tooltip cursor={{ strokeDasharray: '4 4', stroke: '#aaaa' }} />
+          <Legend />
+          <Area dataKey="pv" stackId="1" stroke="#9E8EFF" strokeWidth="4" fill="url(#colorcrv)" />
+          <Area dataKey="uv" stackId="1" stroke="#F2A627" strokeWidth="4" fill="url(#colorbad)" />
+        </AreaChart>
+      </ResponsiveContainer>
     </Box>
   );
 });
