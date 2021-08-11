@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Typography, Button } from '@material-ui/core';
+import { makeStyles, Typography, Button, ListItem, List } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import Box from '@material-ui/core/Box';
 const useStyles = makeStyles((theme) => ({
@@ -61,20 +61,21 @@ const useStyles = makeStyles((theme) => ({
       fontFamily: 'IBM Plex Sans',
       fontSize: 13,
       textTransform: 'none !important',
+      fontWeight: 'bold',
     },
   },
-  buttonRight: {
-    listStyle: 'none',
+  buttonList: {
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
     background: '#222222',
-    color: '#fff',
-    '& button': {
-      color: '#888888 !important',
-      fontFamily: 'IBM Plex Sans',
-      fontSize: 13,
-      textTransform: 'none !important',
-    },
+    width: 'auto',
+    height: 40,
+  },
+  btnTxt: {
+    color: '#888888',
+    fontSize: 13,
+    fontFamily: 'IBM Plex Sans',
   },
 }));
 const TemplateEarnings = observer(() => {
@@ -101,27 +102,35 @@ const TemplateEarnings = observer(() => {
       </Box>
       <Box component="div" className={classes.headerEarnings}>
         <Button variant="contained" disabled className={classes.buttonEarnings}>
-          <h3>All Sett Vaults</h3>
+          <Typography variant="h3">All Sett Vaults</Typography>
         </Button>
-        <Box component="div" className={classes.headerRight}>
-          <ul className={classes.buttonRight}>
-            <li>
-              <Button>1D</Button>
-            </li>
-            <li>
-              <Button>1W</Button>
-            </li>
-            <li>
-              <Button>1M</Button>
-            </li>
-            <li>
-              <Button>1Y</Button>
-            </li>
-            <li>
-              <Button>All Time</Button>
-            </li>
-          </ul>
-        </Box>
+        <List component="nav" aria-label="main mailbox folders" className={classes.buttonList}>
+          <ListItem button>
+            <Typography variant="body1" className={classes.btnTxt}>
+              1D
+            </Typography>
+          </ListItem>
+          <ListItem button>
+            <Typography variant="body1" className={classes.btnTxt}>
+              1W
+            </Typography>
+          </ListItem>
+          <ListItem button>
+            <Typography variant="body1" className={classes.btnTxt}>
+              1M
+            </Typography>
+          </ListItem>
+          <ListItem button>
+            <Typography variant="body1" className={classes.btnTxt}>
+              1Y
+            </Typography>
+          </ListItem>
+          <ListItem button>
+            <Typography variant="body1" className={classes.btnTxt}>
+              All time
+            </Typography>
+          </ListItem>
+        </List>
       </Box>
     </Box>
   );
