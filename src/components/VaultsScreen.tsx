@@ -1,19 +1,27 @@
 import React from 'react';
-import { makeStyles, Typography } from '@material-ui/core';
-import Checkbox from '@material-ui/core/Checkbox';
+import { makeStyles, Box, Typography, Checkbox } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 const useStyles = makeStyles((theme) => ({
-  test: {
-    color: 'red',
+  vaultContainer: {
+    background: '#222222',
+  },
+
+  headerVault: {
+    background: '#222222',
   },
 }));
 const VaultsScreen = () => {
   const classes = useStyles();
   return (
-    <div>
-      {' '}
-      <Typography className={classes.test}>oiiiii</Typography>
-      <Checkbox name="gilad" />
-    </div>
+    <Box component="div" className={classes.vaultContainer}>
+      <Box component="header" className={classes.headerVault}>
+        <Box>
+          <Checkbox />
+          <Typography variant="h6">all set vaults</Typography>
+        </Box>
+      </Box>
+      <CloseIcon />
+    </Box>
   );
 };
 
