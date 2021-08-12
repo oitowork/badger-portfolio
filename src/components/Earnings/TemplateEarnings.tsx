@@ -85,6 +85,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
   },
+  tooltip: {
+    backgroundColor: '#101010',
+  },
 }));
 
 const data = [
@@ -124,17 +127,17 @@ const data = [
     pv: 4300,
   },
 ];
-// const CustomTooltip = ({ name, uv, pv }) => {
-//   if (pv && uv && pv.lenght) {
-//     return (
-//       <div>
-//         <p>{name}</p>
-//         <p>{`Badger/wBTC ${uv}`}</p>
-//         <p>{`crvRenWBTC ${pv}`}</p>
-//       </div>
-//     );
-//   }
-// };
+const CustomTooltip = ({ name, uv, pv }: any) => {
+  const classes = useStyles();
+  console.log(name, pv, uv);
+  return (
+    <Box component="div" className={classes.tooltip}>
+      <p>{name}</p>
+      <p>{`Badger/wBTC ${uv}`}</p>
+      <p>{`crvRenWBTC ${pv}`}</p>
+    </Box>
+  );
+};
 const TemplateEarnings = observer(() => {
   const classes = useStyles();
   return (
@@ -205,7 +208,7 @@ const TemplateEarnings = observer(() => {
           </defs>
           <XAxis />
           <YAxis />
-          <Tooltip cursor={{ strokeDasharray: '4 4', stroke: '#aaaa' }} />
+          <Tooltip content={<CustomTooltip />} cursor={{ strokeDasharray: '4 4', stroke: '#aaaa' }} />
           <Legend />
           <Area dataKey="pv" stackId="1" stroke="#9E8EFF" strokeWidth="4" fill="url(#colorcrv)" />
           <Area dataKey="uv" stackId="1" stroke="#F2A627" strokeWidth="4" fill="url(#colorbad)" />
