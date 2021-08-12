@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Typography, Divider } from '@material-ui/core';
+import { makeStyles, Typography, Divider, IconButton } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import Box from '@material-ui/core/Box';
 import CloseIcon from '@material-ui/icons/Close';
@@ -52,7 +52,9 @@ const TemplateModal = observer(() => {
         <Typography variant="h1" align="left" className={classes.title}>
           My Strategy Balances
         </Typography>
-        <CloseIcon />
+        <IconButton>
+          <CloseIcon />
+        </IconButton>
       </Box>
       <Divider variant="inset" className={classes.divider} />
       <Box component="div" className={classes.modalItens}>
