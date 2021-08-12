@@ -1,7 +1,8 @@
 import React from 'react';
-import { makeStyles, Typography, Button, ListItem, List } from '@material-ui/core';
+import { makeStyles, Typography, Button, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import Box from '@material-ui/core/Box';
+import KeyboardArrowDownOutlinedIcon from '@material-ui/icons/KeyboardArrowDownOutlined';
 const useStyles = makeStyles((theme) => ({
   box: {
     overflow: 'hidden',
@@ -51,12 +52,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttonEarnings: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     width: 140,
     height: 40,
     borderRadius: 4,
+    padding: '0 11px',
     border: '1px solid #000000',
     background: '#101010 !important',
-    '& h3': {
+    '& h6': {
       color: '#fff !important',
       fontFamily: 'IBM Plex Sans',
       fontSize: 13,
@@ -64,22 +69,42 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: 'bold',
     },
   },
+
   buttonList: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     background: '#222222',
-    width: 'auto',
     height: 40,
-  },
-  btnTxt: {
-    color: '#888888',
-    fontSize: 13,
-    fontFamily: 'IBM Plex Sans',
+    borderRadius: 10,
+
+    '& button': {
+      width: 51,
+      height: 40,
+      background: '#222222',
+      color: '#888888',
+      padding: 0,
+      fontSize: 13,
+      '&:first-child': {
+        borderRadius: '10px 0 0 10px',
+        color: '#fff',
+      },
+      '&:last-child': {
+        borderRadius: '0px 10px 10px 0',
+      },
+    },
+    '& .MuiBottomNavigationAction-root.Mui-selected': {
+      fontSize: 13,
+      background: '#111111',
+      color: '#888888',
+      border: '1px solid #000000',
+      padding: 0,
+    },
   },
 }));
 const TemplateEarnings = observer(() => {
   const classes = useStyles();
+  const [value, setValue] = React.useState(0);
   return (
     <Box component="section" className={classes.box}>
       <Box component="header" className={classes.headerEarnings}>
@@ -101,36 +126,24 @@ const TemplateEarnings = observer(() => {
         </Box>
       </Box>
       <Box component="div" className={classes.headerEarnings}>
-        <Button variant="contained" disabled className={classes.buttonEarnings}>
-          <Typography variant="h3">All Sett Vaults</Typography>
+        <Button className={classes.buttonEarnings}>
+          <Typography variant="h6">All Sett Vaults</Typography>
+          <KeyboardArrowDownOutlinedIcon style={{ fontSize: 12, color: '#707070' }} />
         </Button>
-        <List component="nav" aria-label="main mailbox folders" className={classes.buttonList}>
-          <ListItem button>
-            <Typography variant="body1" className={classes.btnTxt}>
-              1D
-            </Typography>
-          </ListItem>
-          <ListItem button>
-            <Typography variant="body1" className={classes.btnTxt}>
-              1W
-            </Typography>
-          </ListItem>
-          <ListItem button>
-            <Typography variant="body1" className={classes.btnTxt}>
-              1M
-            </Typography>
-          </ListItem>
-          <ListItem button>
-            <Typography variant="body1" className={classes.btnTxt}>
-              1Y
-            </Typography>
-          </ListItem>
-          <ListItem button>
-            <Typography variant="body1" className={classes.btnTxt}>
-              All time
-            </Typography>
-          </ListItem>
-        </List>
+        <BottomNavigation
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+          showLabels
+          className={classes.buttonList}
+        >
+          <BottomNavigationAction label="1D" />
+          <BottomNavigationAction label="1W" />
+          <BottomNavigationAction label="1M" />
+          <BottomNavigationAction label="1Y" />
+          <BottomNavigationAction label="All time" />
+        </BottomNavigation>
       </Box>
     </Box>
   );
