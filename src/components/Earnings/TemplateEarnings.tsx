@@ -3,6 +3,7 @@ import { AreaChart, Area, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } f
 import { makeStyles, Typography, Button, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import Box from '@material-ui/core/Box';
+import { StoreContext } from '../..';
 import KeyboardArrowDownOutlinedIcon from '@material-ui/icons/KeyboardArrowDownOutlined';
 const useStyles = makeStyles((theme) => ({
   box: {
@@ -119,51 +120,83 @@ const data = [
     name: 'Page A',
     uv: 4000,
     pv: 2400,
+    ui: 4000,
+    bu: 2400,
   },
   {
     name: 'Page B',
     uv: 3000,
     pv: 1398,
+    ui: 4000,
+    bu: 2400,
   },
   {
     name: 'Page C',
     uv: 2000,
     pv: 9800,
+    ui: 4000,
+    bu: 2400,
   },
   {
     name: 'Page D',
     uv: 2780,
     pv: 3908,
+    ui: 4000,
+    bu: 2400,
   },
   {
     name: 'Page E',
     uv: 1890,
     pv: 4800,
+    ui: 4000,
+    bu: 2400,
   },
   {
     name: 'Page F',
     uv: 2390,
     pv: 3800,
+    ui: 4000,
+    bu: 2400,
   },
   {
     name: 'Page G',
     uv: 3490,
     pv: 4300,
+    ui: 4000,
+    bu: 2400,
   },
 ];
-const CustomTooltip = ({ name, uv, pv }: any) => {
+
+const CustomTooltip = ({ active, payload, label }: any) => {
   const classes = useStyles();
-  console.log(name, pv, uv);
-  return (
-    <Box component="div" className={classes.tooltip}>
-      <p>{name}</p>
-      <p>{`Badger/wBTC ${uv}`}</p>
-      <p>{`crvRenWBTC ${pv}`}</p>
-    </Box>
-  );
+
+  if (active && payload && payload.length) {
+    const valorTotal = payload.reduce((total: any, value: any) => {
+      return total + value.value;
+    }, 0);
+    console.log(payload);
+    return (
+      <Box className={classes.tooltip}>
+        <ul>
+          {payload.map((item: any, index: number) => {
+            return (
+              <li key={index}>
+                {item.dataKey} {item.value}
+              </li>
+            );
+          })}
+          <p>{valorTotal}</p>
+        </ul>
+      </Box>
+    );
+  }
+
+  return null;
 };
 const TemplateEarnings = observer(() => {
   const classes = useStyles();
+  const store = useContext(StoreContext);
+  const { account } = store;
   const [value, setValue] = React.useState(0);
   return (
     <Box component="section" className={classes.box}>
@@ -233,6 +266,8 @@ const TemplateEarnings = observer(() => {
           <Legend />
           <Area dataKey="pv" stackId="1" stroke="#9E8EFF" strokeWidth="4" fill="url(#colorcrv)" />
           <Area dataKey="uv" stackId="1" stroke="#F2A627" strokeWidth="4" fill="url(#colorbad)" />
+          <Area dataKey="ui" stackId="1" stroke="#f24" strokeWidth="4" fill="url(#colorcrv)" />
+          <Area dataKey="bu" stackId="1" stroke="#ac5" strokeWidth="4" fill="url(#colorbad)" />
         </AreaChart>
       </ResponsiveContainer>
     </Box>
