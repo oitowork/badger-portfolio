@@ -1,9 +1,9 @@
-import { makeStyles, Typography, Button } from '@material-ui/core';
+import React, { useContext } from 'react';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { makeStyles, Typography, Button, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import Box from '@material-ui/core/Box';
-import React from 'react';
-import { AreaChart, Area, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import KeyboardArrowDownOutlinedIcon from '@material-ui/icons/KeyboardArrowDownOutlined';
 const useStyles = makeStyles((theme) => ({
   box: {
     overflow: 'hidden',
@@ -53,29 +53,53 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttonEarnings: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     width: 140,
     height: 40,
     borderRadius: 4,
+    padding: '0 11px',
     border: '1px solid #000000',
     background: '#101010 !important',
-    '& h3': {
+    '& h6': {
       color: '#fff !important',
       fontFamily: 'IBM Plex Sans',
       fontSize: 13,
       textTransform: 'none !important',
+      fontWeight: 'bold',
     },
   },
-  buttonRight: {
-    listStyle: 'none',
+
+  buttonList: {
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
     background: '#222222',
-    color: '#fff',
+    height: 40,
+    borderRadius: 10,
+
     '& button': {
-      color: '#888888 !important',
-      fontFamily: 'IBM Plex Sans',
+      width: 51,
+      height: 40,
+      background: '#222222',
+      color: '#888888',
+      padding: 0,
       fontSize: 13,
-      textTransform: 'none !important',
+      '&:first-child': {
+        borderRadius: '10px 0 0 10px',
+        color: '#fff',
+      },
+      '&:last-child': {
+        borderRadius: '0px 10px 10px 0',
+      },
+    },
+    '& .MuiBottomNavigationAction-root.Mui-selected': {
+      fontSize: 13,
+      background: '#111111',
+      color: '#888888',
+      border: '1px solid #000000',
+      padding: 0,
     },
   },
   chart: {
@@ -140,6 +164,7 @@ const CustomTooltip = ({ name, uv, pv }: any) => {
 };
 const TemplateEarnings = observer(() => {
   const classes = useStyles();
+  const [value, setValue] = React.useState(0);
   return (
     <Box component="section" className={classes.box}>
       <Box component="header" className={classes.headerEarnings}>
@@ -161,28 +186,24 @@ const TemplateEarnings = observer(() => {
         </Box>
       </Box>
       <Box component="div" className={classes.headerEarnings}>
-        <Button variant="contained" disabled className={classes.buttonEarnings}>
-          <h3>All Sett Vaults</h3>
+        <Button className={classes.buttonEarnings}>
+          <Typography variant="h6">All Sett Vaults</Typography>
+          <KeyboardArrowDownOutlinedIcon style={{ fontSize: 12, color: '#707070' }} />
         </Button>
-        <Box component="div" className={classes.headerRight}>
-          <ul className={classes.buttonRight}>
-            <li>
-              <Button>1D</Button>
-            </li>
-            <li>
-              <Button>1W</Button>
-            </li>
-            <li>
-              <Button>1M</Button>
-            </li>
-            <li>
-              <Button>1Y</Button>
-            </li>
-            <li>
-              <Button>All Time</Button>
-            </li>
-          </ul>
-        </Box>
+        <BottomNavigation
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+          showLabels
+          className={classes.buttonList}
+        >
+          <BottomNavigationAction label="1D" />
+          <BottomNavigationAction label="1W" />
+          <BottomNavigationAction label="1M" />
+          <BottomNavigationAction label="1Y" />
+          <BottomNavigationAction label="All time" />
+        </BottomNavigation>
       </Box>
       <ResponsiveContainer className={classes.chart} width="95%" aspect={3}>
         <AreaChart
