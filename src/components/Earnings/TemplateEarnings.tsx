@@ -1,10 +1,22 @@
 import React, { useContext } from 'react';
-import { AreaChart, Area, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { makeStyles, Typography, Button, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
-import Box from '@material-ui/core/Box';
 import { StoreContext } from '../..';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import KeyboardArrowDownOutlinedIcon from '@material-ui/icons/KeyboardArrowDownOutlined';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {
+  makeStyles,
+  Typography,
+  Button,
+  BottomNavigation,
+  BottomNavigationAction,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Box,
+} from '@material-ui/core';
+import Data from './staticData';
 const useStyles = makeStyles((theme) => ({
   box: {
     overflow: 'hidden',
@@ -112,60 +124,15 @@ const useStyles = makeStyles((theme) => ({
   },
   tooltip: {
     backgroundColor: '#101010',
+    display: 'block',
+    width: 273,
+
+    '& li': {
+      // display: 'flex',
+      // justifyContent: 'center',
+    },
   },
 }));
-
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    ui: 4000,
-    bu: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    ui: 4000,
-    bu: 2400,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    ui: 4000,
-    bu: 2400,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    ui: 4000,
-    bu: 2400,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    ui: 4000,
-    bu: 2400,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    ui: 4000,
-    bu: 2400,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    ui: 4000,
-    bu: 2400,
-  },
-];
 
 const CustomTooltip = ({ active, payload, label }: any) => {
   const classes = useStyles();
@@ -176,17 +143,21 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     }, 0);
     console.log(payload);
     return (
-      <Box className={classes.tooltip}>
-        <ul>
+      <Box component="div" className={classes.tooltip}>
+        <List disablePadding={false}>
           {payload.map((item: any, index: number) => {
             return (
-              <li key={index}>
-                {item.dataKey} {item.value}
-              </li>
+              <ListItem disableGutters key={index}>
+                <ListItemIcon>
+                  <FiberManualRecordIcon style={{ color: 'green', width: 8 }} />
+                </ListItemIcon>
+                <ListItemText primary={item.dataKey} />
+                <Typography>oi</Typography>
+              </ListItem>
             );
           })}
           <p>{valorTotal}</p>
-        </ul>
+        </List>
       </Box>
     );
   }
@@ -238,16 +209,16 @@ const TemplateEarnings = observer(() => {
           <BottomNavigationAction label="All time" />
         </BottomNavigation>
       </Box>
-      <ResponsiveContainer className={classes.chart} width="95%" aspect={3}>
+      <ResponsiveContainer className={classes.chart} width="95%" aspect={2}>
         <AreaChart
           width={500}
           height={300}
-          data={data}
+          data={Data}
           margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
+            top: 100,
+            right: 0,
+            left: 0,
+            bottom: 0,
           }}
         >
           <defs>
@@ -259,15 +230,53 @@ const TemplateEarnings = observer(() => {
               <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.9} />
               <stop offset="95%" stopColor="#82ca9d" stopOpacity={0.06} />
             </linearGradient>
+            <linearGradient id="colorte" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#124" stopOpacity={0.9} />
+              <stop offset="95%" stopColor="#985" stopOpacity={0.06} />
+            </linearGradient>
+            <linearGradient id="colorta" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#354" stopOpacity={0.9} />
+              <stop offset="95%" stopColor="#895" stopOpacity={0.06} />
+            </linearGradient>
           </defs>
-          <XAxis />
-          <YAxis />
+          <XAxis
+            dx={0}
+            dy={0}
+            axisLine={false}
+            tickLine={true}
+            interval={0}
+            style={{ fontSize: 13 }}
+            dataKey="name"
+            mirror={true}
+            padding={{ left: 0, right: 0 }}
+          />
+          <YAxis
+            dx={0}
+            dy={-53}
+            style={{ fontSize: 13, fontFamily: 'IBM Plex Mono', color: '#FFFFFF' }}
+            padding={{ top: 0, bottom: 0 }}
+            mirror={true}
+            axisLine={false}
+            tickLine={false}
+            tick={{ fill: '#FFFFFF' }}
+            tickCount={8}
+            allowDataOverflow={true}
+            tickFormatter={(numberY: number) => {
+              if (numberY > 999 && numberY % 1000 === 0) {
+                return `$${(Math.sign(numberY) * (Math.abs(numberY) / 1000)).toFixed(0) + 'k'}`;
+              } else if (numberY > 999 && numberY % 5 === 0 && numberY % 2 === 0) {
+                return `$${(Math.sign(numberY) * (Math.abs(numberY) / 1000)).toFixed(1) + 'k'}`;
+              } else {
+                return `$${Math.sign(numberY) * Math.abs(numberY)}`;
+              }
+            }}
+          />
           <Tooltip content={<CustomTooltip />} cursor={{ strokeDasharray: '4 4', stroke: '#aaaa' }} />
           <Legend />
-          <Area dataKey="pv" stackId="1" stroke="#9E8EFF" strokeWidth="4" fill="url(#colorcrv)" />
-          <Area dataKey="uv" stackId="1" stroke="#F2A627" strokeWidth="4" fill="url(#colorbad)" />
-          <Area dataKey="ui" stackId="1" stroke="#f24" strokeWidth="4" fill="url(#colorcrv)" />
-          <Area dataKey="bu" stackId="1" stroke="#ac5" strokeWidth="4" fill="url(#colorbad)" />
+          <Area dataKey="ta" stackId="1" stroke="#F2A627" strokeWidth="4" fill="url(#colorta)" />
+          <Area dataKey="te" stackId="2" stroke="#9E8EFF" strokeWidth="4" fill="url(#colorte)" />
+          <Area dataKey="ti" stackId="3" stroke="#f24" strokeWidth="4" fill="url(#colorcrv)" />
+          <Area dataKey="to" stackId="4" stroke="#ac5" strokeWidth="4" fill="url(#colorbad)" />
         </AreaChart>
       </ResponsiveContainer>
     </Box>
