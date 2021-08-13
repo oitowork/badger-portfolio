@@ -10,6 +10,7 @@ import Networth from './Networth';
 import StrategyBalances from './Balances/StrategyBalances';
 import TemplateModal from './Modal/TemplateModal';
 import AssetBalances from './Balances/AssetBalances';
+import TemplateEarnings from './Earnings/TemplateEarnings';
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
@@ -89,6 +90,9 @@ const Portfolio = observer(() => {
         <Networth />
         <PendingBox />
         <BoostBox />
+      </div>
+      <div className={classes.boxBalances}>
+        <TemplateEarnings />
       </div>
       <div className={classes.boxBalances}>
         <AssetBalances />
