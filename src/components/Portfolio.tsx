@@ -7,8 +7,9 @@ import ReactJson from 'react-json-view';
 import BoostBox from './BoostBox';
 import PendingBox from './PendingBox';
 import Networth from './Networth';
-import AssetBalances from './Balances/AssetBalances';
 import StrategyBalances from './Balances/StrategyBalances';
+import TemplateModal from './Modal/TemplateModal';
+import AssetBalances from './Balances/AssetBalances';
 const useStyles = makeStyles((theme) => ({
   rootContainer: {
     height: '100%',
@@ -94,6 +95,9 @@ const Portfolio = observer(() => {
       </div>
       <div className={classes.boxBalances}>
         <StrategyBalances />
+      </div>
+      <div className={classes.boxBalances}>
+        <TemplateModal />
       </div>
       <Typography variant="h4" align="center" className={classes.header}>
         Badger Portfolio
