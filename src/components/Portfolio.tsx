@@ -83,6 +83,7 @@ const Portfolio = observer(() => {
     'Portfolio Figma': 'https://www.figma.com/file/RkfjApAEdctYaKT3JgiH1M/Badger-Portfolio?node-id=0%3A1',
     'Github Repository': 'https://github.com/Badger-Finance/badger-hackathon/tree/badger-portfolio-hackathon',
   };
+
   return (
     <div className={classes.rootContainer}>
       <div className={classes.boxes}>
