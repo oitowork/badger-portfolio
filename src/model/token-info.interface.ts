@@ -1,9 +1,4 @@
+import { Tokens } from './token.interface';
 export interface TokenInfo {
-    chainId: number;
-    name: string;
-    address: string;
-    symbol: string;
-    decimals: number;
-    logoURI: string;
-  }
-  
+  tokens: Tokens[];
+}

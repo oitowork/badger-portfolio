@@ -22,25 +22,28 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     maxHeight: 530,
-    borderRadius: '0',
+    borderRadius: 0,
 
-    [theme.breakpoints.only('xs')]: {
-      maxHeight: 550,
+    [theme.breakpoints.down('sm')]: {
+      maxHeight: 590,
     },
   },
   table: {
+    fontFamily: 'IBM Plex Sans',
     width: '100%',
     overflow: 'auto',
     background: '#2B2B2B',
     padding: '0 18.5px',
 
     '& thead th': {
+      fontFamily: 'IBM Plex Sans',
       color: '#747474',
       fontSize: '13px',
       padding: '8px 18.5px',
       border: 'none',
     },
     '& tbody tr': {
+      fontFamily: 'IBM Plex Sans',
       lineHeight: '24px',
       '& h6': {
         color: '#fff',
@@ -85,8 +88,7 @@ const useStyles = makeStyles((theme) => ({
 const AssetBalances = observer(() => {
   const classes = useStyles();
   const store = React.useContext(StoreContext);
-  const { account } = store;
-
+  const { account, btcPrice } = store;
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -99,7 +101,7 @@ const AssetBalances = observer(() => {
     setPage(0);
   };
 
-  if (!account) return null;
+  if (!account || !btcPrice) return null;
 
   const tokens = account?.balances.map(({ tokens }) => tokens.map((item) => item));
   const token = tokens?.map((item) => {
@@ -128,43 +130,41 @@ const AssetBalances = observer(() => {
               <TableCell align="right">Balance</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {account?.balances.map(({ tokens }) =>
-              tokens.map(({ name, balance, value }) => {
-                const priceValue = value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-                return (
-                  <TableRow key={name}>
-                    <TableCell align="left">
-                      <Typography variant="h6">{name}</Typography>
-                      <Typography variant="body1">{priceValue}</Typography>
-                    </TableCell>
-                    <TableCell align="center">
-                      <Typography variant="h6">
-                        {(value / account?.nonNativeBalance).toLocaleString(undefined, {
-                          style: 'percent',
-                          minimumFractionDigits: 2,
-                        })}
-                      </Typography>
-                    </TableCell>
-                    <TableCell align="right">
-                      <Typography variant="h6">
-                        {(value / balance).toLocaleString('en-US', {
-                          style: 'currency',
-                          currency: 'USD',
-                          minimumFractionDigits: 2,
-                        })}
-                      </Typography>
-                      <Typography variant="body1">0.00008 BTC</Typography>
-                    </TableCell>
-                    <TableCell align="right">
-                      <Typography variant="h6">{balance.toFixed(2)}</Typography>
-                      <Typography variant="body1">{priceValue}</Typography>
-                    </TableCell>
-                  </TableRow>
-                );
-              }),
-            )}
-            )
+          <TableBody style={{ height: 250 }}>
+            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(({ name, balance, value }, index) => {
+              const priceValue = value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+              const btc = value / balance / btcPrice?.['0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599'];
+              return (
+                <TableRow key={index}>
+                  <TableCell align="left">
+                    <Typography variant="h6">{name}</Typography>
+                    <Typography variant="body1">{priceValue}</Typography>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Typography variant="h6">
+                      {(value / account?.nonNativeBalance).toLocaleString(undefined, {
+                        style: 'percent',
+                        minimumFractionDigits: 2,
+                      })}
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="right">
+                    <Typography variant="h6">
+                      {(value / balance).toLocaleString('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                        minimumFractionDigits: 2,
+                      })}
+                    </Typography>
+                    <Typography variant="body1">{btc >= 1 ? btc.toFixed(3) : btc.toFixed(8)} BTC</Typography>
+                  </TableCell>
+                  <TableCell align="right">
+                    <Typography variant="h6">{balance.toFixed(2)}</Typography>
+                    <Typography variant="body1">{priceValue}</Typography>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>

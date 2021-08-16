@@ -2,7 +2,6 @@ import React from 'react';
 import { MobxRouter } from 'mobx-router';
 import { makeStyles } from '@material-ui/core';
 import store from './mobx/store';
-
 const useStyles = makeStyles((theme) => ({
   appContainer: {
     maxWidth: '100%',
@@ -10,9 +9,9 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
     backgroundColor: '#292929',
     color: '#Ccd6db',
+    fontFamily: 'IBM Plex Mono IBM Plex Sans',
   },
 }));
-
 export default function App(): JSX.Element {
   const classes = useStyles();
   return (
